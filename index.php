@@ -1,5 +1,9 @@
 <?php
-require_once('header.php');
+require_once('conf/config.php');
+require_once(ROOT_PATH . 'header.php');
+require_once(ROOT_PATH . 'db/dbconnect.php');
+
+$db_connection = DbUtil::loginConnection();
 ?>
 <title>Bootstrap 3 Template / Theme - Bootable</title>
 </head>
