@@ -29,6 +29,19 @@ $db_connection = DbUtil::loginConnection();
 
 <!-- Begin Body -->
 <div class="container">
+
+{% load bootstrap3 %}
+<form name="login" action="index_submit" method="get" accept-charset="utf-8">
+    <ul>
+        <li><label for="username">Username</label>
+        <input type="text" name="username" placeholder="your username" required></li>
+        <li><label for="password">Password</label>
+        <input type="password" name="password" placeholder="password" required></li>
+        <li>
+        <input type="submit" value="Login"></li>
+    </ul>
+</form>
+
 	<div class="no-gutter row">
       		<!-- left side column -->
   			<div class="col-md-2">
