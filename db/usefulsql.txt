@@ -1,0 +1,1 @@
+GRANT CREATE, SELECT ON cs4750jci5kb.Users TO cs4750jci5kba;
