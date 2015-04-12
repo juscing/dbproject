@@ -1,4 +1,5 @@
 <?php
+phpinfo();
 require_once('conf/config.php');
 
 require_once(ROOT_PATH . 'db/dbconnect.php');
@@ -20,7 +21,9 @@ if($stmt = $db_connection->prepare("SELECT username, First_Name FROM Users WHERE
     echo("query");
     /* fetch values */
     $result = $stmt->get_result();
+    echo("result");
     $arr = $result->fetch_array();
+    echo("array");
     if(count($arr) < 1) {
         echo("bad login");
         $error = True;
