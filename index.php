@@ -58,7 +58,7 @@ $db_connection = DbUtil::loginConnection();
   </nav><!-- /.navbar -->
 
   <!-- Begin Form -->
-  <form>
+  <form id="movieForm" action="query.php" method="POST">
     <div class="form-group">
       <label for="exampleInputEmail1">Search by one or more of the following dimensions:</label>
       <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Search by Actor or Actress">
@@ -70,17 +70,42 @@ $db_connection = DbUtil::loginConnection();
       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Search by Director">
     </div>
     <div class="form-group">
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Search by Keyword">
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Search by Keyword (We'll do our best to search through movie plots)">
     </div>
+    <div class="form-group">
+      <select class="form-control">
+        <option>Genre</option>
+        <option>Horror</option>
+        <option>Comedy</option>
+        <option>Rom-Com</option>
+        <option>Action</option>
+        <option>Adventure</option>
+      </select>
+    </div>
+    <div class="form-group">
+    <!-- Select Multiple -->
+      <div class="control-group">
+        <label class="control-label" for="selectmultiple">Select Multiple</label>
+        <div class="controls">
+          <select id="selectmultiple" name="selectmultiple" class="input-xlarge" multiple="multiple">
+            <option>1950s</option>
+            <option>1960s</option>
+            <option>1970s</option>
+            <option>1980s</option>
+            <option>1990s</option>
+            <option>2000s</option>
+            <option>2010s</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
     <div class="form-group">
       <p class="help-block">Example block-level help text here.</p>
     </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Check me out
-      </label>
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">Submit</button>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
   </form>
   <!-- End of Form -->
   </body>
