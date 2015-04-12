@@ -58,56 +58,66 @@ $db_connection = DbUtil::loginConnection();
   </nav><!-- /.navbar -->
 
   <!-- Begin Form -->
-  <form id="movieForm" action="query.php" method="POST">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Search by one or more of the following dimensions:</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Search by Actor or Actress">
-    </div>
-    <div class="form-group">
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Search by Movie Title">
-    </div>
+  <div class="container" id="inputForm">
+    <form id="movieForm" action="query.php" method="POST">
       <div class="form-group">
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Search by Director">
-    </div>
-    <div class="form-group">
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Search by Keyword (We'll do our best to search through movie plots)">
-    </div>
-    <div class="form-group">
-      <select class="form-control">
-        <option>Genre</option>
-        <option>Horror</option>
-        <option>Comedy</option>
-        <option>Rom-Com</option>
-        <option>Action</option>
-        <option>Adventure</option>
-      </select>
-    </div>
-    <div class="form-group">
-    <!-- Select Multiple -->
-      <div class="control-group">
-        <label class="control-label" for="selectmultiple">Select Multiple</label>
-        <div class="controls">
-          <select id="selectmultiple" name="selectmultiple" class="input-xlarge" multiple="multiple">
-            <option>1950s</option>
-            <option>1960s</option>
-            <option>1970s</option>
-            <option>1980s</option>
-            <option>1990s</option>
-            <option>2000s</option>
-            <option>2010s</option>
-          </select>
+        <label for="exampleInputEmail1">Search by one or more of the following dimensions:</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Search by Actor or Actress">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Search by Movie Title">
+      </div>
+        <div class="form-group">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Search by Director">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Search by Keyword (We'll do our best to search through movie plots)">
+      </div>
+      <div class="form-group">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            Genre
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation" class="dropdown-header">Scary</li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Horror</a></li>
+            <li role="presentation" class="dropdown-header">Fun</li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Comedy</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Rom-Com</a></li>
+            <li role="presentation" class="dropdown-header">Exciting</li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Adventure</a></li>
+          </ul>
         </div>
       </div>
-    </div>
+      <div class="form-group">
+      <!-- Select Multiple -->
+        <div class="control-group">
+          <label class="control-label" for="selectmultiple">Select Multiple</label>
+          <div class="controls">
+            <select id="selectmultiple" name="selectmultiple" class="input-xlarge" multiple="multiple">
+              <option>1950s</option>
+              <option>1960s</option>
+              <option>1970s</option>
+              <option>1980s</option>
+              <option>1990s</option>
+              <option>2000s</option>
+              <option>2010s</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-    <div class="form-group">
-      <p class="help-block">Example block-level help text here.</p>
+      <div class="form-group">
+        <p class="help-block">Example block-level help text here.</p>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </form>
+    <!-- End of Form -->
     </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-default">Submit</button>
-    </div>
-  </form>
-  <!-- End of Form -->
   </body>
 </html>
 
