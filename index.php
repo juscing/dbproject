@@ -1,9 +1,18 @@
 <?php
 require_once('conf/config.php');
+session_start();
+if(isset($_GET["logout"])) {
+    if(isset($_SESSION['user'])){
+        unset($_SESSION['user']);
+        $logout = True;
+    }
+    if(isset($_SESSION['name'])){
+        unset($_SESSION['name']);    
+    }
+}
+
 require_once(ROOT_PATH . 'header.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
-session_start();
-$db_connection = DbUtil::loginConnection();
 ?>
 <title>Bootstrap 3 Template / Theme - Bootable</title>
 </head>
@@ -46,10 +55,10 @@ $db_connection = DbUtil::loginConnection();
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a>
             <ul class="dropdown-menu">
               <?php if (isset($_SESSION['user'])) : ?>
-              <li><a href="#">Logout</a></li>
-              <li><a href="#"><?php echo($_SESSION['name']."'s ") ?>Profile</a></li>
+              <li><a href="index.php?logout=logout">Logout</a></li>
+              <li><a href="#"><?php echo(htmlspecialchars($_SESSION['name'])."'s ") ?>Profile</a></li>
               <?php else : ?>
-              <li><a href="#">Login</a></li>
+              <li><a href="login.php">Login</a></li>
               <li><a href="#">Register</a></li>
               <?php endif; ?>
               <li class="divider"></li>
@@ -63,6 +72,12 @@ $db_connection = DbUtil::loginConnection();
 
 <header class="masthead">
   <div class="container">
+    <?php if(isset($logout) && $logout) : ?>
+    <div class="alert alert-info alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        You have been logged out.
+    </div>
+    <?php endif; ?>
     <div class="row">
       <div class="col-md-6">
         <h1><a href="#" title="Scroll down for your viewing pleasure">Bootable Template</a>
