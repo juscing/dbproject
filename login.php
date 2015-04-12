@@ -6,7 +6,7 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
 $error = false;
 
 if( isset($_POST['username']) ) {
-
+echo("post");
 $db_connection = DbUtil::loginUserLandConnection();
 
 $user = $_POST["username"];
@@ -17,7 +17,7 @@ if($stmt = $db_connection->prepare("SELECT username, First_Name FROM Users WHERE
     $stmt->bind_param("ss", $user, $pass);
     /* execute query */
     $stmt->execute();
-    
+    echo("query");
     /* fetch values */
     $result = $stmt->get_result();
     $arr = $result->fetch_array();
