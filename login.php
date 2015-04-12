@@ -22,16 +22,18 @@ if($stmt = $db_connection->prepare("SELECT username, First_Name FROM Users WHERE
     $result = $stmt->get_result();
     $arr = $result->fetch_array();
     if(count($arr) < 1) {
+        echo("bad login");
         $error = True;
     } else {
         session_start();
+        echo("session");
         if (!isset($_SESSION['user'])) {
             $_SESSION['user'] = $arr[0];
         }
         if (!isset($_SESSION['name'])) {
             $_SESSION['name'] = $arr[1];
         }
-        // echo("success");
+        echo("success");
         header( 'Location: index.php' );
     }
     
