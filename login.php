@@ -1,5 +1,5 @@
 <?php
-phpinfo();
+// phpinfo();
 require_once('conf/config.php');
 
 require_once(ROOT_PATH . 'db/dbconnect.php');
@@ -7,7 +7,7 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
 $error = false;
 
 if( isset($_POST['username']) ) {
-echo("post");
+// echo("post");
 $db_connection = DbUtil::loginUserLandConnection();
 
 $user = $_POST["username"];
@@ -18,32 +18,29 @@ if($stmt = $db_connection->prepare("SELECT username, First_Name FROM Users WHERE
     $stmt->bind_param("ss", $user, $pass);
     /* execute query */
     $stmt->execute();
-    echo("query");
+    
+    /* bind variables to prepared statement */
+    $stmt->bind_result($ures, $nameres);
+    
     /* fetch values */
-    $result = $stmt->get_result();
-    echo("result");
-    $arr = $result->fetch_array();
-    echo("array");
-    if(count($arr) < 1) {
-        echo("bad login");
-        $error = True;
-    } else {
+    if($stmt->fetch()) {
         session_start();
-        echo("session");
+        // echo("session");
         if (!isset($_SESSION['user'])) {
-            $_SESSION['user'] = $arr[0];
+            $_SESSION['user'] = $ures;
         }
         if (!isset($_SESSION['name'])) {
-            $_SESSION['name'] = $arr[1];
+            $_SESSION['name'] = $nameres;
         }
-        echo("success");
         header( 'Location: index.php' );
+    } else {
+        $error = true;
     }
     
     /* close statement */
     $stmt->close();
 } else {
-    $error = True;
+    $error = true;
 }
 
 /* close connection */
