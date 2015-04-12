@@ -2,7 +2,7 @@
 require_once('conf/config.php');
 require_once(ROOT_PATH . 'header.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
-
+session_start();
 $db_connection = DbUtil::loginConnection();
 ?>
 <title>Bootstrap 3 Template / Theme - Bootable</title>
@@ -45,8 +45,13 @@ $db_connection = DbUtil::loginConnection();
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a>
             <ul class="dropdown-menu">
+              <?php if (isset($_SESSION['user'])) : ?>
+              <li><a href="#">Logout</a></li>
+              <li><a href="#"><?php echo($_SESSION['name']."'s ") ?>Profile</a></li>
+              <?php else : ?>
               <li><a href="#">Login</a></li>
-              <li><a href="#">Profile</a></li>
+              <li><a href="#">Register</a></li>
+              <?php endif; ?>
               <li class="divider"></li>
               <li><a href="#">About</a></li>
              </ul>

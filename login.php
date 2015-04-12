@@ -1,9 +1,53 @@
 <?php
 require_once('conf/config.php');
-require_once(ROOT_PATH . 'header.php');
+
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
-$db_connection = DbUtil::loginConnection();
+$error = false;
+
+if( isset($_POST['username']) ) {
+
+$db_connection = DbUtil::loginUserLandConnection();
+
+$user = $_POST["username"];
+
+$pass = hash("SHA256", $_POST["password"]);
+
+if($stmt = $db_connection->prepare("SELECT username, First_Name FROM Users WHERE username=? AND password = ?")) {
+    $stmt->bind_param("ss", $user, $pass);
+    /* execute query */
+    $stmt->execute();
+    
+    /* fetch values */
+    $result = $stmt->get_result();
+    $arr = $result->fetch_array();
+    if(count($arr) < 1) {
+        $error = True;
+    } else {
+        session_start();
+        if (!isset($_SESSION['user'])) {
+            $_SESSION['user'] = $arr[0];
+        }
+        if (!isset($_SESSION['name'])) {
+            $_SESSION['name'] = $arr[1];
+        }
+        // echo("success");
+        header( 'Location: index.php' );
+    }
+    
+    /* close statement */
+    $stmt->close();
+} else {
+    $error = True;
+}
+
+/* close connection */
+$db_connection->close();
+
+}
+
+require_once(ROOT_PATH . 'header.php');
+
 ?>
 <title>Login</title>
 </head>
@@ -29,7 +73,13 @@ $db_connection = DbUtil::loginConnection();
 
 <!-- Begin Body -->
 <div class="container">
-<form action="/servicedogs/account/login/" method="post" class="form">
+<?php if($error) : ?>
+<div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        Bad username/password combination.
+    </div>
+<?php endif; ?>
+<form action="" method="post" class="form">
     <div class="form-group">
         <label>
             Username
