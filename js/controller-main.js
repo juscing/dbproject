@@ -1,14 +1,14 @@
 console.log("Sup");
 
 $("#menu-toggle").click(function() {
-    console.log($("#title").val());
     $.ajax({
         url: 'php/queryFull.php',
         data: {
             title: $("#title").val()
         },
         success: function(data) {
-            $('#movieHint').html(data);
+            $('#main').hide()
+            $('#results').html(data);
         }
     })
 })
