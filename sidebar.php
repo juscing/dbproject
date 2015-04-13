@@ -11,6 +11,9 @@ $db_connection = DbUtil::loginConnection();
     <!-- Bootstrap Core CSS -->
     <!--<link href="css/bootstrap.css" rel="stylesheet">-->
 
+    <!-- Custom JS -->
+    <script src="js/controller-main.js"></script>
+
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -31,6 +34,7 @@ $db_connection = DbUtil::loginConnection();
         as needed -->
   <script src="js/bootstrap.min.js"></script>
   <!-- END OF STUFF -->
+
 
 
       <!-- NavBar -->
@@ -96,7 +100,7 @@ $db_connection = DbUtil::loginConnection();
                       </li>
                       <li>
                           <div class="form-group">
-                              <input class="form-control" name='title' placeholder="Search by Movie Title">
+                              <input class="form-control" name='title' onkeyup="showHint(this.value)" placeholder="Search by Movie Title">
                           </div>
                       </li>
                       <li>
@@ -113,26 +117,6 @@ $db_connection = DbUtil::loginConnection();
                           <div class="form-group">
                               <input class="form-control" name='keyword' placeholder="Search by Keyword">
                           </div>
-                      </li>
-                      <li>
-                        <div class="form-group">
-                          <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle genre" type="button" name='genre' id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                              Genre
-                              <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                              <li role="presentation" class="dropdown-header">Scary</li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Horror</a></li>
-                              <li role="presentation" class="dropdown-header">Fun</li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Comedy</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Rom-Com</a></li>
-                              <li role="presentation" class="dropdown-header">Exciting</li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Adventure</a></li>
-                            </ul>
-                          </div>
-                        </div>
                       </li>
                       <li>
                           <div class="form-group">
@@ -159,7 +143,28 @@ $db_connection = DbUtil::loginConnection();
                       </li>
                       <li>
                         <div class="form-group">
-                          <a href="#menu-toggle" class="btn btn-default submit" id="menu-toggle" type="submit">Find Movies to Watch</a>
+                          <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle genre" type="button" name='genre' id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                              Genre
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                              <li role="presentation" class="dropdown-header">Scary</li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Horror</a></li>
+                              <li role="presentation" class="dropdown-header">Fun</li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Comedy</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Rom-Com</a></li>
+                              <li role="presentation" class="dropdown-header">Exciting</li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Adventure</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="form-group">
+                          <button href="#menu-toggle" class="btn btn-default submit" id="menu-toggle" type="submit">Find Movies to Watch</button>
+                          <button type="submit" class="btn btn-default">Submit</button>
                         </div>
                       </li>
                   </form>
@@ -169,22 +174,32 @@ $db_connection = DbUtil::loginConnection();
       <!-- /#sidebar-wrapper -->
 
       <!-- Page Content -->
-      <div id="page-content-wrapper">
-          <div class="container-fluid">
-              <div class="row">
-                  <div class="col-lg-12">
-                      <h1>Simple Sidebar</h1>
-                      <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                      <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                      <a href="#menu-toggle" class="btn btn-default" id="menu-toggle2">Try another Search</a>
-                  </div>
-              </div>
-          </div>
+      <div id='content'>
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Simple Sidebar</h1>
+                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle2">Try another Search</a>
+                    </div>
+                </div>
+            </div>
+        </div>
       </div>
       <!-- /#page-content-wrapper -->
 
-  </div>
-  <!-- /#wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </footer>
+    <!-- End of Footer -->
 
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
@@ -205,6 +220,3 @@ $db_connection = DbUtil::loginConnection();
   </script>
 </body>
 </html>
-<?php
-require_once('footer.php');
-?>
