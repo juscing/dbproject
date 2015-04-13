@@ -12,7 +12,7 @@ function queryDB($mT) {
 	}
 
 	$stmt = $db_connection->stmt_init();
-	if ($stmt->prepare("select * from `Movie` where `title` = '$mT'")) {
+	if ($stmt->prepare("SELECT * FROM `Movie` WHERE `title` LIKE '$mT%'")) {
 
 		$stmt->execute();
 		$stmt->bind_result($id, $title, $genreResponse, $uRating, $releaseYear, $runtime, $cRating);

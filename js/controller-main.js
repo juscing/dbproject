@@ -1,10 +1,12 @@
 console.log("Sup");
 
 $("#menu-toggle").click(function() {
+    var movieTitle = $('#title').val();
+    console.log("Searching for " + movieTitle);
     $.ajax({
         url: 'php/queryFull.php',
         data: {
-            title: $("#title").val()
+            title: movieTitle
         },
         success: function(data) {
             $('#main').hide()
@@ -14,31 +16,40 @@ $("#menu-toggle").click(function() {
 })
 
 $("#title").keyup(function() {
-    console.log($("#title").val());
-    $.ajax({
-        type: "GET",
-        url: 'php/queryTitle.php',
-        data: {
-            title: $("#title").val()
-        },
-        success: function(data) {
-            $('#movieHint').html(data);
-        }
-    })
+    var movieTitle = $('#title').val();
+
+    if(movieTitle.length>0) {
+        $.ajax({
+            type: "GET",
+            url: 'php/queryTitle.php',
+            data: {
+                title: movieTitle
+            },
+            success: function(data) {
+                $('#movieHint').html(data);
+            }
+        })
+    } else {
+        $('#movieHint').empty();
+    }
 })
 
 $("#actor").keyup(function() {
-    console.log($("#actor").val());
-    $.ajax({
-        type: "GET",
-        url: 'php/queryActor.php',
-        data: {
-            actor: $("#actor").val()
-        },
-        success: function(data) {
-            $('#actorHint').html(data);
-        }
-    })
+    var actorName = $("#actor").val();
+    if (actorName.length>0) {
+        $.ajax({
+            type: "GET",
+            url: 'php/queryActor.php',
+            data: {
+                actor: actorName
+            },
+            success: function(data) {
+                $('#actorHint').html(data);
+            }
+        })
+    } else {
+        $('#actorName').empty();
+    }
 })
 
 $("#keyword").keyup(function() {
@@ -56,15 +67,19 @@ $("#keyword").keyup(function() {
 })
 
 $("#director").keyup(function() {
-    console.log($("#director").val());
-    $.ajax({
-        type: "GET",
-        url: 'php/queryDirector.php',
-        data: {
-            director: $("#director").val()
-        },
-        success: function(data) {
-            $('#directorHint').html(data);
-        }
-    })
+    var directorName = $('#director').val();
+    if (directorName.length>0) {
+        $.ajax({
+            type: "GET",
+            url: 'php/queryDirector.php',
+            data: {
+                director: directorName
+            },
+            success: function(data) {
+                $('#directorHint').html(data);
+            }
+        })
+    } else {
+        $('#directorHint').empty();
+    }
 })

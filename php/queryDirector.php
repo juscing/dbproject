@@ -12,7 +12,7 @@ function queryDB($dN) {
 	}
 
 	$stmt = $db_connection->stmt_init();
-	if ($stmt->prepare("select name from `Director` where `name` = '$dN'")) {
+	if ($stmt->prepare("SELECT name FROM `Director` WHERE `name` LIKE '$dN%'")) {
 
 		$stmt->execute();
 		$stmt->bind_result($name);

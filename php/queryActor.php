@@ -13,7 +13,7 @@ function queryDB($actor) {
 
 	$stmt = $db_connection->stmt_init();
 	# Change this to: stars with
-	if ($stmt->prepare("select name from `Actor` where `name` = '$actor'")) {
+	if ($stmt->prepare("SELECT name FROM `Actor` WHERE `name` LIKE '$actor%'")) {
 
 		$stmt->execute();
 		$stmt->bind_result($name);
