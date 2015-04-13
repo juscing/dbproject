@@ -11,9 +11,6 @@ $db_connection = DbUtil::loginConnection();
     <!-- Bootstrap Core CSS -->
     <!--<link href="css/bootstrap.css" rel="stylesheet">-->
 
-    <!-- Custom JS -->
-    <script src="js/controller-main.js"></script>
-
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -95,12 +92,13 @@ $db_connection = DbUtil::loginConnection();
                   </a>
               </li>
               <div id="container">
-                  <form id="movieForm" action="query.php" method="POST">
+                  <form id="movieForm" action="query.php" method="GET">
                       <li>
                       </li>
                       <li>
                           <div class="form-group">
-                              <input class="form-control" name='title' onkeyup="showHint(this.value)" placeholder="Search by Movie Title">
+                              <input class="form-control" name='title' id='title' placeholder="Search by Movie Title">
+                          <p><span id="movieHint" name ='movieHint'></span></p>
                           </div>
                       </li>
                       <li>
@@ -164,7 +162,7 @@ $db_connection = DbUtil::loginConnection();
                       <li>
                         <div class="form-group">
                           <button href="#menu-toggle" class="btn btn-default submit" id="menu-toggle" type="submit">Find Movies to Watch</button>
-                          <button type="submit" class="btn btn-default">Submit</button>
+                          <button type="submit" class="btn btn-default" id='submit'>Submit</button>
                         </div>
                       </li>
                   </form>
@@ -179,6 +177,9 @@ $db_connection = DbUtil::loginConnection();
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
+                        <div id='dynamic'>
+
+                        </div>
                         <h1>Simple Sidebar</h1>
                         <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
                         <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
@@ -218,5 +219,9 @@ $db_connection = DbUtil::loginConnection();
       $("#wrapper").toggleClass("toggled");
   });
   </script>
+
+  <!-- Custom JS -->
+  <script src="js/controller-main.js"></script>
+
 </body>
 </html>

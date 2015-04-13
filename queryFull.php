@@ -11,8 +11,6 @@ function queryDB($mT) {
 		return;
 	}
 
-	echo "Connection successful";
-
 	$stmt = $db_connection->stmt_init();
 	if ($stmt->prepare("select * from `Movie` where `title` = '$mT'")) {
 
@@ -36,9 +34,20 @@ function queryDB($mT) {
 	}
 }
 
+// Array with names
+$a[] = "anna";
+$a[] = "brittany";
+$a[] = "cinderella";
+$a[] = "hegdeFund";
+$a[] = "good will hunting";
+$a[] = "good dill bunting";
+
+
 	
 #$actorName = $_POST['actor'];
 $movieTitle = $_GET['title'];
+echo $movieTitle;
+
 #$directorName = $_POST['director'];
 #$keyword = $_POST['keyword'];
 #$genre = $_POST['genre'];
@@ -48,6 +57,26 @@ $movieTitle = $_GET['title'];
 #print "movie: $movieTitle";
 #print "director: $directorName";
 #print "keyword: $keyword";
+
+$hint = "";
+
+// lookup all hints from array if $q is different from "" 
+if ($movieTitle !== "") {
+    $movieTitle = strtolower($movieTitle);
+    $len=strlen($movieTitle);
+    foreach($a as $name) {
+        if (stristr($movieTitle, substr($name, 0, $len))) {
+            if ($hint === "") {
+                $hint = $name;
+            } else {
+                $hint .= ", $name";
+            }
+        }
+    }
+}
+
+// Output "no suggestion" if no hint was found or output correct values 
+echo $hint === "" ? "no suggestion" : $hint;
 
 queryDB($movieTitle);
 
