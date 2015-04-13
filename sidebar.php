@@ -92,23 +92,25 @@ $db_connection = DbUtil::loginConnection();
                   </a>
               </li>
               <div id="container">
-                  <form id="movieForm" action="query.php" method="GET">
+                  <form id="movieForm" method="GET">
                       <li>
                       </li>
                       <li>
                           <div class="form-group">
                               <input class="form-control" name='title' id='title' placeholder="Search by Movie Title">
-                          <p><span id="movieHint" name ='movieHint'></span></p>
+                              <p><span id="movieHint" name ='movieHint'></span></p>
                           </div>
                       </li>
                       <li>
                           <div class="form-group">
-                            <input class="form-control" name='actor' placeholder="Search by Actor">
+                            <input class="form-control" name='actor' id='actor' placeholder="Search by Actor">
+                            <p><span id="actorHint" name ='actorHint'></span></p>
                           </div>
                       </li>
                       <li>
                           <div class="form-group">
-                            <input class="form-control" name='director' placeholder="Search by Director">
+                            <input class="form-control" name='director' id='director' placeholder="Search by Director">
+                            <p><span id="directorHint" name ='directorHint'></span></p>
                           </div>
                       </li>
                       <li>

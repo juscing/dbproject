@@ -1,6 +1,6 @@
 <?php
 
-require_once('conf/config.php');
+require_once('../conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
 function queryDB($mT) {
@@ -12,28 +12,31 @@ function queryDB($mT) {
 	}
 
 	$stmt = $db_connection->stmt_init();
+	# Change this to: stars with
 	if ($stmt->prepare("select * from `Movie` where `title` = '$mT'")) {
 
 		$stmt->execute();
 		$stmt->bind_result($id, $title, $genreResponse, $uRating, $releaseYear, $runtime, $cRating);
 
 		echo "<table>";
-		echo "<tr><th>Title</th><th>Genre</th><th>User Rating</th><th>Year</th><th>Runtime</th><th>Critic Rating</th></tr>";
-
 		while($stmt->fetch()) {
 			echo "<tr>";
 			echo("<td>" . $title . "</td>\n");
-			echo("<td>" . $genreResponse . "</td>\n");
-			echo("<td>" . $uRating . "</td>\n");
-			echo("<td>" . $releaseYear . "</td>\n");
-			echo("<td>" . $runtime . "</td>\n");
-			echo("<td>" . $cRating . "</td>\n");
 		}
 		echo "</table>";
 
 	}
 }
 
+$movieTitle = $_GET['title'];
+
+#$directorName = $_POST['director'];
+#$keyword = $_POST['keyword'];
+#$genre = $_POST['genre'];
+#$year = $_POST['Year'];
+
+// lookup all hints from array if $q is different from "" 
+/*
 // Array with names
 $a[] = "anna";
 $a[] = "brittany";
@@ -42,25 +45,8 @@ $a[] = "hegdeFund";
 $a[] = "good will hunting";
 $a[] = "good dill bunting";
 
-
-	
-#$actorName = $_POST['actor'];
-$movieTitle = $_GET['title'];
-echo $movieTitle;
-
-#$directorName = $_POST['director'];
-#$keyword = $_POST['keyword'];
-#$genre = $_POST['genre'];
-#$year = $_POST['Year'];
-
-#print "actor: $actorName";
-#print "movie: $movieTitle";
-#print "director: $directorName";
-#print "keyword: $keyword";
-
 $hint = "";
 
-// lookup all hints from array if $q is different from "" 
 if ($movieTitle !== "") {
     $movieTitle = strtolower($movieTitle);
     $len=strlen($movieTitle);
@@ -77,6 +63,7 @@ if ($movieTitle !== "") {
 
 // Output "no suggestion" if no hint was found or output correct values 
 echo $hint === "" ? "no suggestion" : $hint;
+*/
 
 queryDB($movieTitle);
 

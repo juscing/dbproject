@@ -1,6 +1,6 @@
 <?php
 
-require_once('conf/config.php');
+require_once('../conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
 function queryDB($mT) {
@@ -35,6 +35,7 @@ function queryDB($mT) {
 }
 
 // Array with names
+/*
 $a[] = "anna";
 $a[] = "brittany";
 $a[] = "cinderella";
@@ -77,7 +78,7 @@ if ($movieTitle !== "") {
 
 // Output "no suggestion" if no hint was found or output correct values 
 echo $hint === "" ? "no suggestion" : $hint;
-
+*/
 queryDB($movieTitle);
 
 ?>
