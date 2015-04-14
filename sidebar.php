@@ -15,7 +15,7 @@ $db_connection = DbUtil::loginConnection();
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title> The Page</title>
+  <title>The Page</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="css/bootstrap.css" rel="stylesheet">
@@ -176,13 +176,15 @@ $db_connection = DbUtil::loginConnection();
       </div>
       <!-- /#sidebar-wrapper -->
       
-      <!-- PAGE CONTENT 
+
       <div id="page-content-wrapper">
           <div class="container-fluid">
               <div class="row">
                   <div class="col-lg-12">
                       <div id='dynamic'>
-
+                        <div id="results">
+                          <!-- RESULTS GO HERE -->
+                        </div>
                       </div>
                       <h1>Simple Sidebar</h1>
                       <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
@@ -192,42 +194,16 @@ $db_connection = DbUtil::loginConnection();
               </div>
           </div>
       </div>
-      -->
       <!-- /#page-content-wrapper -->
 
     </div>
+</div>
     <!-- /#wrapper -->
-
-    <!-- Page Content -->
-    <div id ="content">
-      <div id="main-wrapper" class="col-md-11 pull-right">
-        <div class="toshow" id='tryAgain'>
-          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle2">Try another Search</a>
-        </div>
-        <div id="main">
-          <div class="page-header">
-            <h3> Static Home Page</h3>
-          </div>
-          <p>Lorem Donec ligula felis, tristique ut sollicitudin eget, commodo vel augue. Maecenas quis enim ac elit bibendum tristique. Suspendisse a vestibulum dui. Donec molestie enim vel ornare fermentum. Etiam suscipit, velit et dapibus dapibus, metus tellus convallis nulla, sit amet pharetra magna nunc id mauris. In eget nunc eleifend, aliquet urna sed, viverra ipsum. Quisque fringilla non eros vitae sollicitudin. Pellentesque non nisl est. Suspendisse potenti.</p>
-        </div>
-        <div id="results">
-          <!-- RESULTS GO HERE -->
-        </div>
+<footer class="footer">
+      <div class="container">
+        <p class="text-muted pull-right">Place sticky footer content here.</p>
       </div>
-    </div>
-
-    <!-- Footer -->    
-    <div id='footer'>
-      <footer class="footer">
-        <div class="container">
-          <p class="text-muted">Place sticky footer content here.</p>
-        </div>
-      </footer>
-    </div>
-    <!-- End of Footer -->
-  </div>
-  <!-- End of Container -->
-
+    </footer>
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
 
@@ -251,5 +227,4 @@ $db_connection = DbUtil::loginConnection();
   <!-- Custom JS -->
   <script src="js/controller-main.js"></script>
 
-</body>
-</html>
+</body></html>
