@@ -38,3 +38,8 @@
 .toshow {
     display: none;
 }
+
+.main { 
+	position:relative; 
+	padding:0 0 0 55px; 
+}

@@ -15,10 +15,9 @@ $("#menu-toggle").click(function() {
     })
 })
 
-$("#title").keyup(function() {
+$("#title").on("change keyup paste", function() {
     var movieTitle = $('#title').val();
-
-    if(movieTitle.length>0) {
+    if(movieTitle.length>1) {
         $.ajax({
             type: "GET",
             url: 'php/queryTitle.php',
@@ -34,9 +33,9 @@ $("#title").keyup(function() {
     }
 })
 
-$("#actor").keyup(function() {
+$("#actor").on("change keyup paste", function() {
     var actorName = $("#actor").val();
-    if (actorName.length>0) {
+    if (actorName.length>1) {
         $.ajax({
             type: "GET",
             url: 'php/queryActor.php',
@@ -48,11 +47,11 @@ $("#actor").keyup(function() {
             }
         })
     } else {
-        $('#actorName').empty();
+        $('#actorHint').empty();
     }
 })
 
-$("#keyword").keyup(function() {
+$("#keyword").on("change keyup paste", function() {
     console.log($("#keyword").val());
     $.ajax({
         type: "GET",
@@ -66,9 +65,10 @@ $("#keyword").keyup(function() {
     })
 })
 
-$("#director").keyup(function() {
+$("#director").on("change keyup paste", function() {
     var directorName = $('#director').val();
-    if (directorName.length>0) {
+    console.log(directorName);
+    if (directorName.length>1) {
         $.ajax({
             type: "GET",
             url: 'php/queryDirector.php',

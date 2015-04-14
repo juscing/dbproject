@@ -10,12 +10,11 @@ function queryDB($mT) {
 		echo "connection error";
 		return;
 	}
-
 	$stmt = $db_connection->stmt_init();
-	if ($stmt->prepare("SELECT * FROM `Movie` WHERE `title` LIKE '$mT%'")) {
+	if ($stmt->prepare("SELECT title FROM `Movie` WHERE `title` LIKE '$mT%'")) {
 
 		$stmt->execute();
-		$stmt->bind_result($id, $title, $genreResponse, $uRating, $releaseYear, $runtime, $cRating);
+		$stmt->bind_result($title);
 
 		echo "<table>";
 		while($stmt->fetch()) {

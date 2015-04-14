@@ -24,14 +24,8 @@ $db_connection = DbUtil::loginConnection();
   <link href="css/simple-sidebar.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-<body>
 
+<body>
   <!-- TRYING STUFF OUT -->
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://code.jquery.com/jquery.js"></script>
@@ -89,7 +83,8 @@ $db_connection = DbUtil::loginConnection();
   <!-- End navbar -->
 
   <!-- Page Content -->
-  <div class="container">
+  <div class="container main">
+
     <div id="wrapper">
       <!-- Sidebar -->
       <div id="sidebar-wrapper">
@@ -204,29 +199,34 @@ $db_connection = DbUtil::loginConnection();
     <!-- /#wrapper -->
 
     <!-- Page Content -->
-    <div id="main-wrapper" class="col-md-11 pull-right">
-      <div class="toshow" id='tryAgain'>
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle2">Try another Search</a>
-      </div>
-      <div id="main">
-        <div class="page-header">
-          <h3> Static Home Page</h3>
+    <div id ="content">
+      <div id="main-wrapper" class="col-md-11 pull-right">
+        <div class="toshow" id='tryAgain'>
+          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle2">Try another Search</a>
         </div>
-        <p>Lorem Donec ligula felis, tristique ut sollicitudin eget, commodo vel augue. Maecenas quis enim ac elit bibendum tristique. Suspendisse a vestibulum dui. Donec molestie enim vel ornare fermentum. Etiam suscipit, velit et dapibus dapibus, metus tellus convallis nulla, sit amet pharetra magna nunc id mauris. In eget nunc eleifend, aliquet urna sed, viverra ipsum. Quisque fringilla non eros vitae sollicitudin. Pellentesque non nisl est. Suspendisse potenti.</p>
+        <div id="main">
+          <div class="page-header">
+            <h3> Static Home Page</h3>
+          </div>
+          <p>Lorem Donec ligula felis, tristique ut sollicitudin eget, commodo vel augue. Maecenas quis enim ac elit bibendum tristique. Suspendisse a vestibulum dui. Donec molestie enim vel ornare fermentum. Etiam suscipit, velit et dapibus dapibus, metus tellus convallis nulla, sit amet pharetra magna nunc id mauris. In eget nunc eleifend, aliquet urna sed, viverra ipsum. Quisque fringilla non eros vitae sollicitudin. Pellentesque non nisl est. Suspendisse potenti.</p>
+        </div>
+        <div id="results">
+          <!-- RESULTS GO HERE -->
+        </div>
       </div>
-      <div id="results">
-        <!-- RESULTS GO HERE -->
-      </div>
-    
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
-      </div>
-    </footer>
-    <!-- End of Footer -->
     </div>
 
+    <!-- Footer -->    
+    <div id='footer'>
+      <footer class="footer">
+        <div class="container">
+          <p class="text-muted">Place sticky footer content here.</p>
+        </div>
+      </footer>
+    </div>
+    <!-- End of Footer -->
+  </div>
+  <!-- End of Container -->
 
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
