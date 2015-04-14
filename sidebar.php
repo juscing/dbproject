@@ -204,27 +204,12 @@ $db_connection = DbUtil::loginConnection();
         <div class="toshow" id='tryAgain'>
           <a href="#menu-toggle" class="btn btn-default" id="menu-toggle2">Try another Search</a>
         </div>
-        <div id="main">
-          <div class="page-header">
-            <h3> Static Home Page</h3>
-          </div>
-          <p>Lorem Donec ligula felis, tristique ut sollicitudin eget, commodo vel augue. Maecenas quis enim ac elit bibendum tristique. Suspendisse a vestibulum dui. Donec molestie enim vel ornare fermentum. Etiam suscipit, velit et dapibus dapibus, metus tellus convallis nulla, sit amet pharetra magna nunc id mauris. In eget nunc eleifend, aliquet urna sed, viverra ipsum. Quisque fringilla non eros vitae sollicitudin. Pellentesque non nisl est. Suspendisse potenti.</p>
-        </div>
+        <img src="img/main/uva.png" class='displayed' alt="Mountain View" style="height:100%">
         <div id="results">
           <!-- RESULTS GO HERE -->
         </div>
       </div>
     </div>
-
-    <!-- Footer -->    
-    <div id='footer'>
-      <footer class="footer">
-        <div class="container">
-          <p class="text-muted">Place sticky footer content here.</p>
-        </div>
-      </footer>
-    </div>
-    <!-- End of Footer -->
   </div>
   <!-- End of Container -->
 
