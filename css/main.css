@@ -1,0 +1,45 @@
+/*  Pushes the form to right */
+.form-group{
+   	margin: 20px;
+}
+
+/* Removes margin between navbar and sidebar */
+.thinnav {
+	margin-bottom: 0px;
+}
+
+/* Set Form input background*/
+.form-control {
+    background-color:#666;
+    color: #FFF;
+}
+
+/* Set Form dropdown background*/
+.year {
+	background-color:#666;
+    color: #FFF;
+}
+
+/* Set Form dropdown background*/
+.genre {
+	background-color:#666;
+    color: #FFF;
+}
+
+/* Set text on submit button */
+.submit {
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;	
+	margin: auto;	
+	padding: 8px 10px 10px 10px;
+}
+
+.toshow {
+    display: none;
+}
+
+.main { 
+	position:relative; 
+	padding:0 0 0 55px; 
+}
