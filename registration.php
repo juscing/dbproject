@@ -3,8 +3,38 @@ require_once('conf/config.php');
 
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
-$error = false;
+if( isset($_POST['username']) ) {
+// echo("post");
+$db_connection = DbUtil::loginUserLandConnection();
 
+$user = $_POST["username"];
+$pass1 = $_POST["password"];
+$pass2 = $_POST["passwordVerify"];
+$email = $_POST["userEmail"];
+$fname = $_POST["fName"];
+$lname = $_POST["lName"];
+}
+
+if(empty($user)) {
+
+}
+
+if(empty($pass)) {
+
+}
+
+if(empty($pass2)) {
+
+}
+
+if(empty($email)) {
+
+}
+/*
+if($stmt = $db_connection->prepare("INSERT INTO Users VALUES (value1,value2,value3,...);")) {
+	
+}
+*/
 require_once(ROOT_PATH . 'header.php');
 
 ?>
@@ -30,7 +60,20 @@ $(document).ready(function () {
     }
 });	
 	$("form#register").validate();
-	
+	$("#username").change(function () {
+		$.post("checkUsername.php", { username: $("#username").val() }, function (data) {
+			if(data === "good") {
+				$("#usergroup").addClass("has-success").removeClass("has-error");
+				$("#username-error").remove();
+				$("#usergroup").append('<span class="help-block" id="username-error">Valid username</span>');
+			} else {
+				$("#usergroup").addClass("has-error").removeClass("has-success");
+				$("#username-error").remove();
+				$("#usergroup").append('<span class="help-block" id="username-error">That username is already taken.</span>');
+			}
+			
+		});
+	});
 })
 </script>
 <title>Registration</title>
@@ -56,11 +99,11 @@ $(document).ready(function () {
 <!-- Begin Body -->
 <div class="container">
 <form id="register" action="" method="post" class="form">
-    <div class="form-group">
+    <div id="usergroup" class="form-group">
         <label>
             Username:
         </label>
-        <input name="username" type="text" class="form-control" required="">
+        <input id="username" name="username" type="text" class="form-control" required="">
     </div>
     <div class="form-group">
         <label>
