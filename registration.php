@@ -1,5 +1,4 @@
 <?php
-// phpinfo();
 require_once('conf/config.php');
 
 require_once(ROOT_PATH . 'db/dbconnect.php');
@@ -9,9 +8,32 @@ $error = false;
 require_once(ROOT_PATH . 'header.php');
 
 ?>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	// override jquery validate plugin defaults
+	$.validator.setDefaults({
+   	 highlight: function(element) {
+      	  $(element).closest('.form-group').addClass('has-error');
+    	 },
+    	  unhighlight: function(element) {
+        		$(element).closest('.form-group').removeClass('has-error');
+    		},
+    		errorElement: 'span',
+    		errorClass: 'help-block',
+    		errorPlacement: function(error, element) {
+        	if(element.parent('.input-group').length) {
+            error.insertAfter(element.parent());
+        	} else {
+            error.insertAfter(element);
+        	}
+    }
+});	
+	$("form#register").validate();
+	
+})
+</script>
 <title>Registration</title>
-</head>
-<body>
 </head>
 <body>
 
@@ -33,36 +55,30 @@ require_once(ROOT_PATH . 'header.php');
 
 <!-- Begin Body -->
 <div class="container">
-<?php if($error) : ?>
-<div class="alert alert-danger alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        Bad username/password combination.
-    </div>
-<?php endif; ?>
-<form action="" method="post" class="form">
+<form id="register" action="" method="post" class="form">
     <div class="form-group">
         <label>
             Username:
         </label>
-        <input name="username" type="text" class="form-control">
+        <input name="username" type="text" class="form-control" required="">
     </div>
     <div class="form-group">
         <label>
             Password:
         </label>
-        <input name="password" type="password" class="form-control">
+        <input id="password1" name="password" minlength="6" type="password" class="form-control" required="">
     </div>
     <div class="form-group">
         <label>
             Confirm Password:
         </label>
-        <input name="passwordVerify" type="password" class="form-control">
+        <input name="passwordVerify" equalTo="#password1" type="password" class="form-control" required="">
     </div>
     <div class="form-group">
         <label>
             Email:
         </label>
-        <input name="userEmail" type="email" class="form-control">
+        <input name="userEmail" type="email" class="form-control" required="">
     </div>
     <div class="form-group">
         <label>
@@ -77,9 +93,8 @@ require_once(ROOT_PATH . 'header.php');
         <input name="lName" type="text" class="form-control">
     </div>
     <button class="btn btn-lg btn-primary" type="submit">Register</button>
-    <!--<strong><a href="/servicedogs/account/password-reset/">Forgot Your Username/Password?</a></strong>-->
 </form>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
 </div>
 <?php
 require_once('footer.php');
