@@ -24,8 +24,8 @@ if($_POST["username"]) {
 	}
 }
 if($error) {
-	echo("bad");
+	echo(json_encode(false));
 } else {
-	echo("good");
+	echo(json_encode(true));
 }	
 ?>

@@ -59,22 +59,31 @@ $(document).ready(function () {
         	}
     }
 });	
-	$("form#register").validate();
-	$("#username").change(function () {
-		$.post("checkUsername.php", { username: $("#username").val() }, function (data) {
-			if(data === "good") {
-				$("#usergroup").addClass("has-success").removeClass("has-error");
-				$("#username-error").remove();
-				$("#usergroup").append('<span class="help-block" id="username-error">Valid username</span>');
-			} else {
-				$("#usergroup").addClass("has-error").removeClass("has-success");
-				$("#username-error").remove();
-				$("#usergroup").append('<span class="help-block" id="username-error">That username is already taken.</span>');
-			}
-			
-		});
+	var validator = $("form#register").validate({
+	rules: {
+    username: {
+      required: true,
+      remote: {
+        url: "checkUsername.php",
+        type: "post",
+        data: {
+          username: function() {
+            return $( "#username" ).val();
+          }
+        }
+      }
+    }
+  },
+  messages: {
+    username: "That username is already taken",
+  },
+  success: function(element) {
+  	//label.text("Valid");
+    element.closest('.form-group').removeClass('has-error').addClass('has-success');
+  }
+	
 	});
-})
+});
 </script>
 <title>Registration</title>
 </head>
