@@ -2,11 +2,11 @@
 require_once('conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
-function checkUsername($username) {
+function checkEmail($email) {
 	$db_connection = DbUtil::loginUserLandConnection();
 	$dupe = FALSE;
-	if($stmt = $db_connection->prepare("SELECT username FROM Users WHERE username=?")) {
-		$stmt->bind_param("s", $username);
+	if($stmt = $db_connection->prepare("SELECT email FROM Users WHERE email=?")) {
+		$stmt->bind_param("s", $email);
     	/* execute query */
     	$stmt->execute();
     	
@@ -22,8 +22,8 @@ function checkUsername($username) {
 	return $dupe;
 }
 
-if(isset($_POST["usernamecheck"])) {
-	if(checkUsername(trim($_POST["usernamecheck"]))) {
+if(isset($_POST["emailcheck"])) {
+	if(checkEmail(trim($_POST["emailcheck"]))) {
 		echo(json_encode(false));
 	} else {
 		echo(json_encode(true));			

@@ -59,7 +59,7 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
               <li><a href="#"><?php echo(htmlspecialchars($_SESSION['name'])."'s ") ?>Profile</a></li>
               <?php else : ?>
               <li><a href="login.php">Login</a></li>
-              <li><a href="#">Register</a></li>
+              <li><a href="registration.php">Register</a></li>
               <?php endif; ?>
               <li class="divider"></li>
               <li><a href="#">About</a></li>

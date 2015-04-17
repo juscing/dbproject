@@ -10,9 +10,9 @@ if( isset($_POST['username']) ) {
 // echo("post");
 $db_connection = DbUtil::loginUserLandConnection();
 
-$user = $_POST["username"];
+$user = trim($_POST["username"]);
 
-$pass = hash("SHA256", $_POST["password"]);
+$pass = hash("SHA256", trim($_POST["password"]));
 
 if($stmt = $db_connection->prepare("SELECT username, First_Name FROM Users WHERE username=? AND password = ?")) {
     $stmt->bind_param("ss", $user, $pass);
@@ -30,7 +30,11 @@ if($stmt = $db_connection->prepare("SELECT username, First_Name FROM Users WHERE
             $_SESSION['user'] = $ures;
         }
         if (!isset($_SESSION['name'])) {
-            $_SESSION['name'] = $nameres;
+        		if(empty($nameres)) {
+        			$_SESSION['name'] = $ures;
+        		} else {
+        			$_SESSION['name'] = $nameres;
+        		}
         }
         header( 'Location: index.php' );
     } else {
