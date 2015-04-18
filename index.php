@@ -13,6 +13,7 @@ if(isset($_GET["logout"])) {
 
 require_once(ROOT_PATH . 'header.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
+
 ?>
 <title>Bootstrap 3 Template / Theme - Bootable</title>
 </head>
@@ -70,6 +71,8 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
     </div>
 </nav><!-- /.navbar -->
 
+<!-- Header -->
+<!--
 <header class="masthead">
   <div class="container">
     <?php if(isset($logout) && $logout) : ?>
@@ -79,76 +82,15 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
     </div>
     <?php endif; ?>
     <div class="row">
-      <div class="col-md-6">
-        <h1><a href="#" title="Scroll down for your viewing pleasure">Bootable Template</a>
-          <p class="lead">3-column Theme + Layout for Bootstrap 3.</p></h1>
-      </div>
-      <div class="col-md-6">
-        <div class="well pull-right">
-          <img src="//placehold.it/280x100/E7E7E7">        
-        </div>
-      </div>
     </div>
   </div>
 </header>
 
+
 <!-- Begin Body -->
 <div class="container">
 	<div class="no-gutter row">
-      		<!-- left side column -->
-  			<div class="col-md-2">
-              	<div class="panel panel-default" id="sidebar">
-                <div class="panel-heading" style="background-color:#888;color:#fff;">Sidebar</div> 
-                <div class="panel-body">
-      			<ul class="nav nav-stacked">
-                    <li><a href="#">Link</a></li>
-          			<li><a href="#">Link</a></li>
-                  	<li><a href="#">Link</a></li>
-          			<li><a href="#">Link</a></li>
-                  	<li><a href="#">Link</a></li>
-          			<li><a href="#">Link</a></li>
-				</ul>
-                <div class="accordion" id="accordion2">
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                Accordion
-                            </a>
-                        </div>
-                        <div id="collapseOne" class="accordion-body collapse in">
-                            <div class="accordion-inner">
-                                Content here for links, ads, etc.. 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-group">
-                            <div class="accordion-heading">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                                    Accordion
-                                </a>
-                            </div>
-                            <div id="collapseTwo" class="accordion-body collapse">
-                                <div class="accordion-inner">
-                                    Another collapse panel. Content here for links, ads, etc.. 
-                                </div>
-                            </div>
-                        </div>
-               	</div><!--/acc-->
-                  
-                  <hr>
-
-                <div class="col col-span-12">
-                  <i class="icon-2x icon-facebook"></i>&nbsp;
-                  <i class="icon-2x icon-twitter"></i>&nbsp;
-                  <i class="icon-2x icon-linkedin"></i>&nbsp;
-                  <i class="icon-2x icon-pinterest"></i>
-                </div>
-                
-                </div><!--/panel body-->
-              </div><!--/panel-->
-      		</div><!--/end left column-->
-      			
-      		<!--mid column-->
+      		<!-- left side column -->      			
       		<div class="col-md-3">
               <div class="panel" id="midCol">
                 <div class="panel-heading" style="background-color:#555;color:#eee;">New Stories</div> 
