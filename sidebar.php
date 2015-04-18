@@ -13,7 +13,7 @@ $db_connection = DbUtil::loginConnection();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="author" content="Justin Ingram" >
 
   <title>The Page</title>
 
@@ -199,11 +199,22 @@ $db_connection = DbUtil::loginConnection();
     </div>
 </div>
     <!-- /#wrapper -->
-<footer class="footer">
-      <div class="container">
-        <p class="text-muted pull-right">Place sticky footer content here.</p>
+
+    <!-- Page Content -->
+    <div id ="content">
+      <div id="main-wrapper" class="col-md-11 pull-right">
+        <div class="toshow" id='tryAgain'>
+          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle2">Try another Search</a>
+        </div>
+        <img src="img/main/uva.png" class='displayed' alt="Mountain View" style="height:100%">
+        <div id="results">
+          <!-- RESULTS GO HERE -->
+        </div>
       </div>
-    </footer>
+    </div>
+  </div>
+  <!-- End of Container -->
+
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
 
