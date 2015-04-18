@@ -27,10 +27,16 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
 <link rel="stylesheet" href="css/main.css">
 <title>Search for Movies!</title>
 <!-- Custom JS -->
-  <script src="js/controller-main.js"></script>
+  <script type="text/javascript" src="js/controller-main.js"></script>
+  <script type="text/javascript" src="js/jquery.jscroll.min.js"></script>
   <!-- Menu Toggle Script -->
   <script>
   $(document).ready(function() {
+  	$("#result").jscroll({
+    loadingHtml: '<img src="img/ajax.-loader.gif" alt="Loading" /> Loading...',
+    padding: 20,
+    nextSelector: 'a.jscroll-next:last'
+	});
   	$("#menu-toggle").click(function(e) {
       e.preventDefault();
       $('#tryAgain').show()
@@ -41,6 +47,17 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
       $('#tryAgain').hide()
       $("#wrapper").toggleClass("toggled");
   });
+  $("a#actorlink").click(function(e) {
+  		e.preventDefault();
+  		$("#wrapper").addClass("toggled");
+  		var res = $("#results");
+  		res.fadeOut(function () {
+  			res.empty();
+  			res.load("php/actorPage.php", function () {
+  				res.show();
+  			});
+  		})
+  	});
   });
   </script>
 </head>
@@ -48,25 +65,19 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
 <nav class="navbar navbar-fixed-top">
    <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="index.php"><b>MovieDB</b></a>
+      <a class="navbar-brand toggler" href="#"><b>MovieDB</b></a>
       <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="glyphicon glyphicon-chevron-down"></span>
       </a>
     </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">  
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Channels</a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Sub-link</a></li>
-              <li><a href="#">Sub-link</a></li>
-              <li><a href="#">Sub-link</a></li>
-              <li><a href="#">Sub-link</a></li>
-              
-            </ul>
-          </li>
+          <li><a id="actorlink" href="#">Actors</a></li>
+          <li><a href="#">Directors</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">Producers</a></li>
+          <li><a href="#">Studios</a></li>
+
         </ul>
         <ul class="nav navbar-right navbar-nav">
           <li>
@@ -196,15 +207,15 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
         						You have been logged out.
     							</div>
     						<?php endif; ?>
+								<div style="display:none;" id="tryAgain"><a href="#menu-toggle" class="btn btn-default toggler" id="menu-toggle2">Try another Search</a></div>                 
                         <div id="results">
                           <!-- RESULTS GO HERE -->
-									<h1>Simple Sidebar</h1>
+									<h1>Search for Movies!</h1>
                       <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
                       <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>                          
                           <img src="img/main/uva.png" class='displayed' alt="Mountain View" style="height:100%">
                         </div>
                       </div>
-                      <a href="#menu-toggle" class="btn btn-default toggler" id="menu-toggle2">Try another Search</a>
                   </div>
               </div>
           </div>
