@@ -3,19 +3,14 @@ console.log("Sup");
 $("#menu-toggle").click(function() {
     var movieTitle = $('#title').val();
     console.log("Searching for " + movieTitle);
-    $.ajax({
-        url: 'php/queryFull.php',
-        data: {
-            title: movieTitle
-        },
-        success: function(data) {
-            console.log("SUCCESS");
-            $('#main').hide();
-            $('#dynamic').hide();
-            $('#results').html(data);
-        }
-    })
-})
+    var res = $("#results");
+    res.fadeOut(function () {
+  			res.empty();
+  			res.load("php/queryFull.php", { title: movieTitle }, function () {
+  				res.fadeIn();
+  			});
+  		});
+});
 
 $("#title").on("change keyup paste", function() {
     var movieTitle = $('#title').val();
