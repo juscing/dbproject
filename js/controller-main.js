@@ -9,7 +9,6 @@ $("#menu-toggle").click(function() {
             title: movieTitle
         },
         success: function(data) {
-            $('#movieHint').html(data);
             $('#main').hide();
             $('#results').html(data);
         }

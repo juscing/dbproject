@@ -12,7 +12,6 @@ function queryDB($name) {
 		$lastname=$firstname;
 	}
 
-	echo $lastname." ".strlen($lastname);
 	#$db_connection = DbUtil::loginConnection();
 	$db_connection = new mysqli('stardock.cs.virginia.edu', 'cs4750jci5kb', 'moviedbgroup', 'cs4750jci5kb');
 	if (mysqli_connect_errno()) {

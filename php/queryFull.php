@@ -31,6 +31,20 @@ function queryDB($arguments) {
 		}
 		echo "</table>";
 
+		echo '<div class="featurette" id="about">';
+        echo '<img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">';
+        echo '<h2 class="featurette-heading">The First Movie <span class="text-muted">will be here.</span></h2>';
+        echo '<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>';
+        echo '</div>';
+        echo '<hr class="featurette-divider">';
+
+
+		echo '<div class="featurette" id="about">';
+        echo '<img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">';
+        echo '<h2 class="featurette-heading">The Second Movie <span class="text-muted">would be here.</span></h2>';
+        echo '<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>';
+        echo '</div>';
+        echo '<hr class="featurette-divider">';
 	}
 }
 
@@ -63,6 +77,6 @@ foreach ($params as $key => $value) {
 	echo "Key: $key; Value: $value<br />\n";
 }
 
-queryDB($movieTitle);
+#queryDB($movieTitle);
 
 ?>
