@@ -10,23 +10,36 @@ function queryDB($offset) {
 		$stmt->bind_param("i", $offset);
 		$stmt->execute();
 		$stmt->bind_result($fname, $lname);
-		
-		echo "<h1>Actors</h1>";
-		echo '<table class="table table-striped">';
-		echo "<tr>";
+		$count = 0;
+		if($offset == 0) {
+			echo '<div id="scroller"><h1>Actors</h1>';
+		}
+		$stmt->store_result();
+		if($stmt->num_rows > 0) {
+			echo '<table class="table table-striped">';
+			echo "<tr>";
 			echo("<th>" . "First Name" . "</th>\n");
 			echo("<th>" . "Last Name" . "</th>\n");
-			echo "</tr>";
-		while($stmt->fetch()) {
+			echo "</tr>";		
+		}
+		while($stmt->fetch()) {			
 			echo "<tr>";
 			echo("<td>" . $fname . "</td>\n");
 			echo("<td>" . $lname . "</td>\n");
 			echo "</tr>";
 		}
+		if($stmt->num_rows > 0) {
 		echo '<tr style="display:none;">';
-			echo('<td><a class="jscroll-next" href="php/actorPage.php?offset=?' . (string)($offset + 20) . '">Offset</a></td>');
+			$new_offset = $offset + 20;
+			echo('<td><a class="jscroll-next" href="php/actorPage.php?offset=' . $new_offset . '">Offset</a></td>');
 			echo "</tr>";
 		echo "</table>";
+		} else {
+			echo "<p>No more results!</p>";
+		}
+		if($offset == 0) {
+			echo '</div>';
+		}
 	}
 }
 

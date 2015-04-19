@@ -32,11 +32,6 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   <!-- Menu Toggle Script -->
   <script>
   $(document).ready(function() {
-  	$("#result").jscroll({
-    loadingHtml: '<img src="img/ajax.-loader.gif" alt="Loading" /> Loading...',
-    padding: 20,
-    nextSelector: 'a.jscroll-next:last'
-	});
   	$("#menu-toggle").click(function(e) {
       e.preventDefault();
       $('#tryAgain').show()
@@ -55,8 +50,10 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   			res.empty();
   			res.load("php/actorPage.php", function () {
   				res.fadeIn();
+  				item = $("#scroller");
+  				scroller(item);
   			});
-  		})
+  		});
   	});
   	$("#directorlink").click(function(e) {
   		e.preventDefault();
@@ -66,10 +63,33 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   			res.empty();
   			res.load("php/directorPage.php", function () {
   				res.fadeIn();
+  				item = $("#scroller");
+  				scroller(item);
   			});
-  		})
+  		});
+  	});
+  	$("#movielink").click(function(e) {
+  		e.preventDefault();
+  		$("#wrapper").addClass("toggled");
+  		var res = $("#results");
+  		res.fadeOut(function () {
+  			res.empty();
+  			res.load("php/moviePage.php", function () {
+  				res.fadeIn();
+  				item = $("#scroller");
+  				scroller(item);
+  			});
+  		});
   	});
   });
+function scroller(item) {
+item.jscroll({
+    loadingHtml: '<tr><td colspan="100"><img src="img/ajax-loader.gif" alt="Loading" /> Loading...</td></tr>',
+    padding: 20,
+    nextSelector: 'a.jscroll-next:last'
+	});
+return item;
+}
   </script>
 </head>
 <body>
@@ -85,10 +105,7 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
         <ul class="nav navbar-nav">  
           <li><a id="actorlink" href="#">Actors</a></li>
           <li><a id="directorlink" href="#">Directors</a></li>
-          <li><a href="#">Movies</a></li>
-          <li><a href="#">Producers</a></li>
-          <li><a href="#">Studios</a></li>
-
+          <li><a id="movielink" href="#">Movies</a></li>
         </ul>
         <ul class="nav navbar-right navbar-nav">
           <li>
