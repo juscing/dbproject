@@ -27,7 +27,6 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
 <link rel="stylesheet" href="css/main.css">
 <title>Search for Movies!</title>
 <!-- Custom JS -->
-  <script type="text/javascript" src="js/controller-main.js"></script>
   <script type="text/javascript" src="js/jquery.jscroll.min.js"></script>
   <!-- Menu Toggle Script -->
   <script>
@@ -224,6 +223,7 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
 
     </div>
 </div>
+  <script type="text/javascript" src="js/controller-main.js"></script>
     <!-- /#wrapper -->
 <?php
 require_once('footer.php');
