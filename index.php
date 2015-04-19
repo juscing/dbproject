@@ -23,8 +23,9 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   <meta name="author" content="Justin Ingram" >
 
 <!-- Custom CSS -->
-  <link href="css/simple-sidebar.css" rel="stylesheet">
+<link href="css/simple-sidebar.css" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/one-page-wonder.css">
 <title>Search for Movies!</title>
 <!-- Custom JS -->
   <script type="text/javascript" src="js/jquery.jscroll.min.js"></script>
@@ -193,23 +194,16 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
           </ul>
       </div>
       <!-- /#sidebar-wrapper -->
-      
-
       <div id="page-content-wrapper">
           <div class="container-fluid">
               <div class="row">
                   <div class="col-lg-12">
                       <div style="display:none;" id="tryAgain">
                         <a href="#menu-toggle" class="btn btn-default toggler" id="menu-toggle2">Try another Search</a>
-                      </div>     
-                      <div id="wrapper">
+                      </div>
                         <div id="results">
                           <!-- RESULTS GO HERE -->
                         </div>
-                      </div>
-                      <div id="wrapper">
-                        <hr class="featurette-divider">
-                      </div>
                       <div id='dynamic'>
                         <?php if(isset($logout) && $logout) : ?>
           	   		    		<div class="alert alert-info alert-dismissable">

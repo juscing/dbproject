@@ -36,5 +36,5 @@ function queryDB($name) {
 	}
 }
 
-#queryDB($_GET['actor']);
+queryDB($_GET['actor']);
 ?>
