@@ -3,8 +3,8 @@
 require_once('../conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
-function queryDB($mT) {
-	#$db_connection = DbUtil::loginConnection();
+function queryDB($arguments) {
+	//$db_connection = DbUtil::loginConnection();
 	$db_connection = new mysqli('stardock.cs.virginia.edu', 'cs4750jci5kb', 'moviedbgroup', 'cs4750jci5kb');
 	if (mysqli_connect_errno()) {
 		echo "connection error";
@@ -12,7 +12,7 @@ function queryDB($mT) {
 	}
 
 	$stmt = $db_connection->stmt_init();
-	if ($stmt->prepare("select * from `Movie` where `title` = '$mT'")) {
+	if ($stmt->prepare("SELECT * from (Actor NATURAL JOIN StarredIn NATURAL JOIN Movie NATURAL JOIN Directed NATURAL JOIN Director) WHERE `title` = '$mT'")) {
 
 		$stmt->execute();
 		$stmt->bind_result($id, $title, $genreResponse, $uRating, $releaseYear, $runtime, $cRating);
@@ -34,51 +34,35 @@ function queryDB($mT) {
 	}
 }
 
-// Array with names
-/*
-$a[] = "anna";
-$a[] = "brittany";
-$a[] = "cinderella";
-$a[] = "hegdeFund";
-$a[] = "good will hunting";
-$a[] = "good dill bunting";
+// Array
+$params = array();
 
-
-	
-#$actorName = $_POST['actor'];
+//$actorName = $_POST['actor'];
 $movieTitle = $_GET['title'];
-echo $movieTitle;
+$actor = $_GET['actor'];
+$director = $_GET['director'];
+//$keyword = $_GET['keyword'];
+//$movieTitle = $_GET['title'];
+//$movieTitle = $_GET['title'];
 
-#$directorName = $_POST['director'];
-#$keyword = $_POST['keyword'];
-#$genre = $_POST['genre'];
-#$year = $_POST['Year'];
+if (strlen($movieTitle)>0) {
+	$params['title']= "%$movieTitle%";
+} 
 
-#print "actor: $actorName";
-#print "movie: $movieTitle";
-#print "director: $directorName";
-#print "keyword: $keyword";
+if (strlen($actor)>0) {
+	$params['first_name']= "%$actor%";
+	$params['last_name']= "%$actor";
+} 
 
-$hint = "";
+if (strlen($director)>0) {
+	$params['director_first_name']= "%$director%";
+	$params['last_name']= "%$director";
+} 
 
-// lookup all hints from array if $q is different from "" 
-if ($movieTitle !== "") {
-    $movieTitle = strtolower($movieTitle);
-    $len=strlen($movieTitle);
-    foreach($a as $name) {
-        if (stristr($movieTitle, substr($name, 0, $len))) {
-            if ($hint === "") {
-                $hint = $name;
-            } else {
-                $hint .= ", $name";
-            }
-        }
-    }
+foreach ($params as $key => $value) {
+	echo "Key: $key; Value: $value<br />\n";
 }
 
-// Output "no suggestion" if no hint was found or output correct values 
-echo $hint === "" ? "no suggestion" : $hint;
-*/
 queryDB($movieTitle);
 
 ?>
