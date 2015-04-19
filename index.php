@@ -23,11 +23,11 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   <meta name="author" content="Justin Ingram" >
 
 <!-- Custom CSS -->
-  <link href="css/simple-sidebar.css" rel="stylesheet">
+<link href="css/simple-sidebar.css" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/one-page-wonder.css">
 <title>Search for Movies!</title>
 <!-- Custom JS -->
-  <script type="text/javascript" src="js/controller-main.js"></script>
   <script type="text/javascript" src="js/jquery.jscroll.min.js"></script>
   <!-- Menu Toggle Script -->
   <script>
@@ -47,7 +47,7 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
       $('#tryAgain').hide()
       $("#wrapper").toggleClass("toggled");
   });
-  $("a#actorlink").click(function(e) {
+  $("#actorlink").click(function(e) {
   		e.preventDefault();
   		$("#wrapper").addClass("toggled");
   		var res = $("#results");
@@ -194,26 +194,27 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
           </ul>
       </div>
       <!-- /#sidebar-wrapper -->
-      
-
       <div id="page-content-wrapper">
           <div class="container-fluid">
               <div class="row">
                   <div class="col-lg-12">
-                      <div id='dynamic'>
-                      <?php if(isset($logout) && $logout) : ?>
-					    		<div class="alert alert-info alert-dismissable">
-        						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        						You have been logged out.
-    							</div>
-    						<?php endif; ?>
-								<div style="display:none;" id="tryAgain"><a href="#menu-toggle" class="btn btn-default toggler" id="menu-toggle2">Try another Search</a></div>                 
+                      <div style="display:none;" id="tryAgain">
+                        <a href="#menu-toggle" class="btn btn-default toggler" id="menu-toggle2">Try another Search</a>
+                      </div>
                         <div id="results">
                           <!-- RESULTS GO HERE -->
-									<h1>Search for Movies!</h1>
-                      <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                      <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>                          
-                          <img src="img/main/uva.png" class='displayed' alt="Mountain View" style="height:100%">
+                        </div>
+                      <div id='dynamic'>
+                        <?php if(isset($logout) && $logout) : ?>
+          	   		    		<div class="alert alert-info alert-dismissable">
+               		   				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                		  				You have been logged out.
+          			   				</div>
+        						    <?php endif; ?>
+    									 <h1>Search for Movies!</h1>
+                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                          <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>                          
+                           <img src="img/main/uva.png" class='displayed' alt="Mountain View" style="height:100%">
                         </div>
                       </div>
                   </div>
@@ -224,7 +225,8 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
 
     </div>
 </div>
-    <!-- /#wrapper -->
+<script type="text/javascript" src="js/controller-main.js"></script>
+<!-- /#wrapper -->
 <?php
 require_once('footer.php');
 ?>

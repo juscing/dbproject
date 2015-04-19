@@ -9,7 +9,9 @@ $("#menu-toggle").click(function() {
             title: movieTitle
         },
         success: function(data) {
-            $('#main').hide()
+            console.log("SUCCESS");
+            $('#main').hide();
+            $('#dynamic').hide();
             $('#results').html(data);
         }
     })
@@ -17,7 +19,8 @@ $("#menu-toggle").click(function() {
 
 $("#title").on("change keyup paste", function() {
     var movieTitle = $('#title').val();
-    if(movieTitle.length>1) {
+    console.log(movieTitle);
+    if(movieTitle.length>0) {
         $.ajax({
             type: "GET",
             url: 'php/queryTitle.php',
@@ -35,7 +38,8 @@ $("#title").on("change keyup paste", function() {
 
 $("#actor").on("change keyup paste", function() {
     var actorName = $("#actor").val();
-    if (actorName.length>1) {
+    if (actorName.length>0) {
+        console.log(actorName);
         $.ajax({
             type: "GET",
             url: 'php/queryActor.php',
@@ -68,7 +72,7 @@ $("#keyword").on("change keyup paste", function() {
 $("#director").on("change keyup paste", function() {
     var directorName = $('#director').val();
     console.log(directorName);
-    if (directorName.length>1) {
+    if (directorName.length>0) {
         $.ajax({
             type: "GET",
             url: 'php/queryDirector.php',
