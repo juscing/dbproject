@@ -58,6 +58,17 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   			});
   		})
   	});
+  	$("#directorlink").click(function(e) {
+  		e.preventDefault();
+  		$("#wrapper").addClass("toggled");
+  		var res = $("#results");
+  		res.fadeOut(function () {
+  			res.empty();
+  			res.load("php/directorPage.php", function () {
+  				res.fadeIn();
+  			});
+  		})
+  	});
   });
   </script>
 </head>
@@ -73,7 +84,7 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">  
           <li><a id="actorlink" href="#">Actors</a></li>
-          <li><a href="#">Directors</a></li>
+          <li><a id="directorlink" href="#">Directors</a></li>
           <li><a href="#">Movies</a></li>
           <li><a href="#">Producers</a></li>
           <li><a href="#">Studios</a></li>

@@ -6,12 +6,12 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
 function queryDB($offset) {
 	$db_connection = DbUtil::loginConnection();
 	$offset = intval($offset, $base = 10);
-	if ($stmt = $db_connection->prepare("SELECT first_name, last_name FROM `Actor` LIMIT 20 OFFSET ?")) {
+	if ($stmt = $db_connection->prepare("SELECT director_first_name, director_last_name FROM `Director` LIMIT 20 OFFSET ?")) {
 		$stmt->bind_param("i", $offset);
 		$stmt->execute();
 		$stmt->bind_result($fname, $lname);
 		
-		echo "<h1>Actors</h1>";
+		echo "<h1>Directors</h1>";
 		echo '<table class="table table-striped">';
 		echo "<tr>";
 			echo("<th>" . "First Name" . "</th>\n");
