@@ -6,10 +6,11 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
 function queryDB($name) {
 	$names = explode(" ", $name);
 	$firstname = $names[0];
-	$lastname = $names[1];
 
-	if (strlen($actor)<1) {
+	if (sizeof($names)<2) {
 		$lastname=$firstname;
+	} else {
+		$lastname=$names[1];
 	}
 
 	#$db_connection = DbUtil::loginConnection();
@@ -35,6 +36,5 @@ function queryDB($name) {
 	}
 }
 
-
-queryDB($_GET['actor']);
+#queryDB($_GET['actor']);
 ?>

@@ -9,7 +9,9 @@ $("#menu-toggle").click(function() {
             title: movieTitle
         },
         success: function(data) {
+            console.log("SUCCESS");
             $('#main').hide();
+            $('#dynamic').hide();
             $('#results').html(data);
         }
     })
