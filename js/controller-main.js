@@ -2,15 +2,25 @@ console.log("Sup");
 
 $("#menu-toggle").click(function() {
     var movieTitle = $('#title').val();
+    var actor = $('#actor').val();
+    var director = $('#director').val();
+    var keyword = $('#keyword').val();
     console.log("Searching for " + movieTitle);
+    console.log("Searching for " + actor);
+    console.log("Searching for " + director);
+    console.log("Searching for " + keyword);
     var res = $("#results");
     res.fadeOut(function () {
-  			res.empty();
-  			res.load("php/queryFull.php", { title: movieTitle }, function () {
-  				res.fadeIn();
-  			});
-  		});
-});
+        res.empty();
+        res.load("php/queryFull.php", { 
+            title: movieTitle,
+            actor: actor,
+            director: director
+        }, function () {
+            res.fadeIn();
+        });
+    });
+})
 
 $("#title").on("change keyup paste", function() {
     var movieTitle = $('#title').val();

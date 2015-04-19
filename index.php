@@ -149,7 +149,7 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
                       </li>
                       <li>
                           <div class="form-group">
-                              <input class="form-control" name='keyword' placeholder="Search by Keyword">
+                              <input class="form-control" name='keyword' id='keyword' placeholder="Search by Keyword">
                           </div>
                       </li>
                       <li>

@@ -3,13 +3,18 @@
 require_once('../conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
-function queryDB($dN) {
-	$names = explode(" ", $dN);
+function queryDB($name) {
+	$names = explode(" ", $name, 2);
 	$firstname = $names[0];
-	$lastname = $names[1];
+	$condition = "OR";
 
-	if (strlen($actor)<1) {
+	if (sizeof($names)<2) {
 		$lastname=$firstname;
+	} else if ($names[1] =="") {
+		$lastname=$firstname;
+	} else {
+		$condition = "AND";
+		$lastname=$names[1];
 	}
 
 	#$db_connection = DbUtil::loginConnection();
@@ -21,7 +26,7 @@ function queryDB($dN) {
 
 	$stmt = $db_connection->stmt_init();
 	# Change this to: stars with
-	if ($stmt->prepare("SELECT director_first_name, director_last_name FROM `Director` WHERE `director_first_name` LIKE '$firstname%' OR `director_last_name` LIKE '$lastname%'")) {
+	if ($stmt->prepare("SELECT director_first_name, director_last_name FROM `Director` WHERE `director_first_name` LIKE '$firstname%' ". $condition . "`director_last_name` LIKE '$lastname%'")) {
 
 		$stmt->execute();
 		$stmt->bind_result($fname, $lname);
