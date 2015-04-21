@@ -14,7 +14,7 @@ $('#actorDiv span').click(function() {
     });
 });
 
-$('#genreDiv p').click(function() {
+$('#genreDiv span').click(function() {
 
  	var genreType = $(this).text();
  	console.log(genreType);
@@ -30,7 +30,7 @@ $('#genreDiv p').click(function() {
     });
 });
 
-$('#directorDiv p').click(function() {
+$('#directorDiv span').click(function() {
 
  	var directorName = $(this).text();
  	console.log(directorName);
@@ -46,7 +46,7 @@ $('#directorDiv p').click(function() {
     });
 });
 
-$('#yearDiv p').click(function() {
+$('#yearDiv span').click(function() {
 
  	var yearNumber = $(this).text();
  	console.log(yearNumber);
