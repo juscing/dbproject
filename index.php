@@ -108,6 +108,18 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   			});
   		});
   	});
+  	$("#profilelink").click(function (e) {
+  		e.preventDefault();
+  		var ref = $(this).attr('href');
+  		var res = $("#results");
+  		res.fadeOut(function () {
+  			res.empty();
+  			$(window).unbind('scroll');
+  			res.load(ref, function () {
+  				res.fadeIn();
+  			});
+  		});
+  });
   });
 function scroller(item) {
 item.jscroll({
@@ -144,7 +156,7 @@ return item;
             <ul class="dropdown-menu">
               <?php if (isset($_SESSION['user'])) : ?>
               <li><a href="index.php?logout=logout">Logout</a></li>
-              <li><a href="#"><?php echo(htmlspecialchars($_SESSION['name'])."'s ") ?>Profile</a></li>
+              <li><a id="profilelink" href="profile.php"><?php echo(htmlspecialchars($_SESSION['name'])."'s ") ?>Profile</a></li>
               <?php else : ?>
               <li><a href="login.php">Login</a></li>
               <li><a href="registration.php">Register</a></li>

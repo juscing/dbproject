@@ -12,7 +12,7 @@ function queryDB($offset) {
 	}
 	$db_connection = DbUtil::loginConnection();
 	$offset = intval($offset, $base = 10);
-	$queryuser = "SELECT username, Movie.movie_id, title, genre, year, runtime, user_rating, critic_rating FROM `Movie` LEFT JOIN `Favorites` ON Movie.movie_id = Favorites.movie_id WHERE username = ? OR username IS NULL LIMIT 20 OFFSET ?";
+	$queryuser = "SELECT username, Movie.movie_id, title, genre, year, runtime, user_rating, critic_rating FROM `Movie` LEFT JOIN (SELECT * FROM `Favorites` WHERE username = ?) AS faves ON Movie.movie_id = faves.movie_id LIMIT 20 OFFSET ?";
 	if ($stmt = $db_connection->prepare($queryuser)) {
 		$stmt->bind_param("si", $user, $offset);
 		$stmt->execute();
