@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once('../conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
@@ -24,6 +26,10 @@ function queryDB($offset) {
 			echo("<th>" . "Runtime" . "</th>\n");
 			echo("<th>" . "User Rating" . "</th>\n");
 			echo("<th>" . "Critic Rating" . "</th>\n");
+			if(isset($_SESSION['user'])) {
+				echo("<th>" . "Favorite" . "</th>\n");
+				echo("<th>" . "Watch List" . "</th>\n");
+			}
 			echo "</tr>";		
 		}
 		while($stmt->fetch()) {			
@@ -34,6 +40,10 @@ function queryDB($offset) {
 			echo("<td>" . $runtime . "</td>\n");
 			echo("<td>" . $user_rating . "</td>\n");
 			echo("<td>" . $critic_rating . "</td>\n");
+			if(isset($_SESSION['user'])) {
+				echo('<td><a href="favmovie.php?movie='.$id.'" class="star notfav"></a></td>');
+				echo("<td>" . "Watch List" . "</td>\n");
+			}
 			echo "</tr>";
 		}
 		if($stmt->num_rows > 0) {

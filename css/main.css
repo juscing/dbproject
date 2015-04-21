@@ -75,7 +75,7 @@ h1 {
   font-size: 169px;
   font-weight: normal;
   line-height: 48px;
-  margin: 0 0 26px;
+  margin: 26px 0 26px;
   padding: 0 0 60px;
   text-transform: uppercase;
   text-align:center;
@@ -101,4 +101,15 @@ blockquote {
   margin: 0 0 24px 30px;
   padding-left: 30px;
   width: 150px;
+}
+a.star {
+	height: 25px;
+	width: 25px;
+	display: block;
+}
+a.fav {
+	background: url('../img/starsprite.png') -25px 0 no-repeat;
+}
+a.notfav {
+	background: url('../img/starsprite.png') 0 0 no-repeat;
 }
