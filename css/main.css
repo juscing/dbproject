@@ -26,6 +26,11 @@
     color: #FFF;
 }
 
+.rating {
+  background-color:#666;
+    color: #FFF;
+}
+
 /* Set text on submit button */
 .submit {
 	text-align: center;
@@ -63,12 +68,37 @@ body {
   background-color: #f5f5f5;
 }
 
-.displayed {
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 45vw;
-    height: 45vh;
-    position: relative;
-  	top: 50%;
+h1 {
+  border-bottom: 1px solid #999999;
+  color: #77CCDD;
+  font-family: "Marvel", sans-serif;
+  font-size: 169px;
+  font-weight: normal;
+  line-height: 48px;
+  margin: 0 0 26px;
+  padding: 0 0 60px;
+  text-transform: uppercase;
+  text-align:center;
+}
+h2 {
+  color: #77CCDD;
+  font-family: "Marvel", sans-serif;
+  font-size: 28px;
+  font-weight: normal;
+  line-height: 30px;
+  margin: 0 0 18px;
+  padding: 12px 0 0;
+  text-transform: uppercase;
+}
+blockquote {
+  border-left: 5px solid #f0f1e7;
+  color: #b2b888;
+  float: right;
+  font-family: "Marvel", sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 24px;
+  margin: 0 0 24px 30px;
+  padding-left: 30px;
+  width: 150px;
 }
