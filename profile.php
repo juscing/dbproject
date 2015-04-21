@@ -23,10 +23,20 @@ if ($stmt = $db_connection->prepare("SELECT title, movie_id FROM `Movie` NATURAL
 			echo("<p><strong><a class=\"ajaxlink\" href=\"movie.php?movie=$id\">$title</a></strong> | <a class=\"remfave text-danger\" href=\"favmovie.php?movie=$id\">Remove</a></p>");		
 		}
 }
-
-
 ?>
 
 <h2>Favorite Actors</h2>
+
+<?php
+$db_connection = DbUtil::loginConnection();
+if ($stmt = $db_connection->prepare("SELECT director_first_name, director_id, director_last_name FROM `Director` NATURAL JOIN `Favorite_Director` WHERE username = ?")) {
+		$stmt->bind_param("s", $_SESSION['user']);
+		$stmt->execute();
+		$stmt->bind_result($fname, $id, $lname);
+		while($stmt->fetch()) {
+			echo("<p><strong>$fname $lname</strong> | <a class=\"remfave text-danger\" href=\"favdirector.php?director=$id\">Remove</a></p>");		
+		}
+}
+?>
 
 <h2>Favorite Directors</h2>
