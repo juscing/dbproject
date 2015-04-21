@@ -25,7 +25,7 @@ if ($stmt = $db_connection->prepare("SELECT title, movie_id FROM `Movie` NATURAL
 }
 ?>
 
-<h2>Favorite Actors</h2>
+<h2>Favorite Directors</h2>
 
 <?php
 $db_connection = DbUtil::loginConnection();
@@ -39,4 +39,4 @@ if ($stmt = $db_connection->prepare("SELECT director_first_name, director_id, di
 }
 ?>
 
-<h2>Favorite Directors</h2>
+<h2>Favorite Actors</h2>
