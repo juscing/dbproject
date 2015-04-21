@@ -127,6 +127,10 @@ if (isset($_POST['year']) && !empty($_POST['year'])) {
 	$year = $_POST['year'];
 	$params['year']= $year;
 }
+if (isset($_POST['phrase']) && !empty($_POST['phrase'])) {
+	$phrase = $_POST['phrase'];
+	echo '<h2> ' . $phrase . '</h2>';
+}
 
 queryDB($params);
 ?>
