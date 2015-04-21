@@ -91,6 +91,7 @@ item.jscroll({
 return item;
 }
   </script>
+
 </head>
 <body>
 <nav class="navbar navbar-fixed-top">
@@ -138,9 +139,6 @@ return item;
       <div id="sidebar-wrapper">
           <ul class="sidebar-nav">
               <li class="sidebar-brand">
-                  <a href="#">
-                      Find a Movie!
-                  </a>
               </li>
               <div id="container">
                   <form id="movieForm" method="GET">
@@ -170,11 +168,33 @@ return item;
                           </div>
                       </li>
                       <li>
+                        <div class="form-group">
+                          <input class="span2" id="rating_value" name="rating_value" type="hidden">
+                          <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle rating" type="button" name='Rating' id="Rating" data-toggle="dropdown" aria-expanded="true">
+                              Rating
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                              <li onclick="$('#rating_value').val('1')"; role="presentation"><a role="menuitem" tabindex="-1" href="#">1</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">9</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">10</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </li>                   
+                      <li>
                           <div class="form-group">
                             <div class="dropdown">
-                              <button class="btn btn-default dropdown-toggle year" type="button" name='Year' id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                Year
-                                <span class="caret"></span>
+                              <button class="btn btn-default dropdown-toggle year" type="button" name='Year' id="Year" data-toggle="dropdown" aria-expanded="true">
+                                Year <span class="caret"></span>
                               </button>
                               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                 <li role="presentation" class="dropdown-header">Classics</li>
@@ -195,7 +215,7 @@ return item;
                       <li>
                         <div class="form-group">
                           <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle genre" type="button" name='genre' id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                            <button class="btn btn-default dropdown-toggle genre" type="button" name='genre' id="Genre" data-toggle="dropdown" aria-expanded="true">
                               Genre
                               <span class="caret"></span>
                             </button>
@@ -238,10 +258,10 @@ return item;
         						    <?php endif; ?>
                          <div id="results">
                           <!-- RESULTS GO HERE -->
-                          	 <h1>Search for Movies!</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                          <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>                          
-                           <img src="img/main/uva.png" class='displayed' alt="Mountain View" style="height:100%">
+                          <br><br><br><br>
+                          <h1>Smoothie</h1>  
+                          <h2 class="words"> Finally, find a movie you <i>want</i> to watch. Simply enter in the type of movie you want to see on the left, and we will do all the work for you!"</h2>
+                          <img src="img/main/ch1.jpg" class='displayed' alt="Mountain View" height="50%" style="position:fixed;bottom:0px;right:0px;" >
                         </div>    								
                         </div>
                       </div>
@@ -254,6 +274,7 @@ return item;
     </div>
 </div>
 <script type="text/javascript" src="js/controller-main.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Marvel:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
 <!-- /#wrapper -->
 <?php
 require_once('footer.php');

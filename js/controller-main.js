@@ -1,5 +1,19 @@
 console.log("Sup");
 
+$(".actorLink").click(function() {
+    var movieTitle = this.text();
+    console.log("Searching for " + movieTitle);
+    var res = $("#results");
+    res.fadeOut(function () {
+        res.empty();
+        res.load("php/queryFull.php", { 
+            title: movieTitle,
+        }, function () {
+            res.fadeIn();
+        });
+    });
+})
+
 $("#menu-toggle").click(function() {
     var movieTitle = $('#title').val();
     var actor = $('#actor').val();

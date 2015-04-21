@@ -6,6 +6,7 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
 function queryDB($arguments) {
 	// Declarations
 	$movieMap = array();
+	$movies = array();
 
 	//$db_connection = DbUtil::loginConnection();
 	$db_connection = new mysqli('stardock.cs.virginia.edu', 'cs4750jci5kb', 'moviedbgroup', 'cs4750jci5kb');
@@ -14,13 +15,30 @@ function queryDB($arguments) {
 		return;
 	}
 
-	// Build the Query
+	// Build the Query to find all actor's movies
 	$stmt = $db_connection->stmt_init();
-	$query = "SELECT * from (`Actor` NATURAL JOIN `StarredIn` NATURAL JOIN `Movie` NATURAL JOIN `Directed` NATURAL JOIN `Director`) WHERE";
+	$query = "SELECT movie_id from (`Actor` NATURAL JOIN `StarredIn` NATURAL JOIN `Movie` NATURAL JOIN `Directed` NATURAL JOIN `Director`) WHERE";
 	foreach ($arguments as $key => $value) {
 		$query=$query . " `" . $key . "` LIKE '" . $value . "' AND ";
 	}
 	$query=substr($query,0, -5);
+
+	// Find all the movies an actor has been in
+	if ($stmt->prepare($query)) {
+		$stmt->execute();
+		$stmt->bind_result($movie_id);
+
+		while($stmt->fetch()) {
+			$movies[] = $movie_id;
+		}
+	}
+
+	// Return all the movies that the Actor has been in
+	$query = "SELECT * from (`Actor` NATURAL JOIN `StarredIn` NATURAL JOIN `Movie` NATURAL JOIN `Directed` NATURAL JOIN `Director`) WHERE";
+	foreach ($movies as $value) {
+		$query=$query . " `movie_id` LIKE '" . $value . "' OR ";
+	}
+	$query=substr($query,0, -4);
 
 	// Execute the Query
 	if ($stmt->prepare($query)) {
@@ -49,9 +67,11 @@ function queryDB($arguments) {
 	        echo '<p class="lead">Release: '.$movieMap[$title]["data"]["releaseYear"].'</p>';
 	        echo '<p class="lead">User Ratings: '.$movieMap[$title]["data"]["uRating"].'</p>';
 	        echo '<p class="lead">Genre: '.$movieMap[$title]["data"]["genre"].'</p>';
+
 			foreach ($movie["actors"] as $a) {
 	        	$actors[]='<span class="lead" onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$a.'</span>';
 	        }
+
     		echo '<div id="actorDiv">';
     		echo '<p class="lead">Actors: '.implode('<span>, </span>', $actors).'</p>';
 	        echo '</div>';
@@ -67,7 +87,6 @@ function queryDB($arguments) {
 $params = array();
 
 // Grab Variables
-$movieTitle = $_POST['title'];
 $actor = $_POST['actor'];
 $director = $_POST['director'];
 
@@ -94,11 +113,6 @@ if (sizeof($names)<2) {
 } else {
 	$director_lastname=$names[1];
 }
-
-// Add non-Null values to parameters
-if (strlen($movieTitle)>0) {
-	$params['title']= "%$movieTitle%";
-} 
 
 if (strlen($actor)>0) {
 	$params['first_name']= "%$firstname%";
