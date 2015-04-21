@@ -10,7 +10,7 @@ function queryDB($offset) {
 		$user = $_SESSION['user'];
 	}
 	$db_connection = DbUtil::loginConnection();
-	$offset = intval($offset, $base = 20);
+	$offset = intval($offset, $base = 10);
 	$query = "SELECT director_first_name, director_last_name, username, Director.director_id FROM `Director` LEFT JOIN (SELECT * FROM `Favorite_Director` WHERE username = ?) AS faves ON Director.director_id = faves.director_id LIMIT 20 OFFSET ?";
 	if ($stmt = $db_connection->prepare($query)) {
 		$stmt->bind_param("si", $user, $offset);

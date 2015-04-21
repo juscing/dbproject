@@ -40,3 +40,15 @@ if ($stmt = $db_connection->prepare("SELECT director_first_name, director_id, di
 ?>
 
 <h2>Favorite Actors</h2>
+
+<?php
+$db_connection = DbUtil::loginConnection();
+if ($stmt = $db_connection->prepare("SELECT first_name, actor_id, last_name FROM `Actor` NATURAL JOIN `Favorite_Actors` WHERE username = ?")) {
+		$stmt->bind_param("s", $_SESSION['user']);
+		$stmt->execute();
+		$stmt->bind_result($fname, $id, $lname);
+		while($stmt->fetch()) {
+			echo("<p><strong>$fname $lname</strong> | <a class=\"remfave text-danger\" href=\"favactor.php?actor=$id\">Remove</a></p>");		
+		}
+}
+?>
