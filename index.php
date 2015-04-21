@@ -170,9 +170,31 @@ return item;
                           </div>
                       </li>
                       <li>
+                        <div class="form-group">
+                          <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle year" type="button" name='Rating' id="dropdownRating" data-toggle="dropdown" aria-expanded="true">
+                              Rating
+                              <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">9</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">10</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </li>                   
+                      <li>
                           <div class="form-group">
                             <div class="dropdown">
-                              <button class="btn btn-default dropdown-toggle year" type="button" name='Year' id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                              <button class="btn btn-default dropdown-toggle year" type="button" name='Year' id="dropdownYear" data-toggle="dropdown" aria-expanded="true">
                                 Year
                                 <span class="caret"></span>
                               </button>
@@ -195,7 +217,7 @@ return item;
                       <li>
                         <div class="form-group">
                           <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle genre" type="button" name='genre' id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                            <button class="btn btn-default dropdown-toggle genre" type="button" name='genre' id="dropdownGenre" data-toggle="dropdown" aria-expanded="true">
                               Genre
                               <span class="caret"></span>
                             </button>
