@@ -62,11 +62,11 @@ function queryDB($arguments) {
    	        //echo '<img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">';
 	        echo '<h2 class="featurette-heading">'.$title.'<span class="text-muted"></span></h2>';
 	        echo '<p class="lead">'.$movieMap[$title]["data"]["plot"].'</p>';
-	       	echo '<p class="lead">Director: '.$movieMap[$title]["data"]["director"].'</p>';
+	       	echo '<div id="directorDiv"><p class="lead">Director: '.$movieMap[$title]["data"]["director"].'</p></div>';
 	        echo '<p class="lead">MetaCritic Rating: '.$movieMap[$title]["data"]["cRating"].'</p>';
-	        echo '<p class="lead">Release: '.$movieMap[$title]["data"]["releaseYear"].'</p>';
+	        echo '<div id="genreDiv"><p class="lead">Release: '.$movieMap[$title]["data"]["releaseYear"].'</p>/div>';
 	        echo '<p class="lead">User Ratings: '.$movieMap[$title]["data"]["uRating"].'</p>';
-	        echo '<p class="lead">Genre: '.$movieMap[$title]["data"]["genre"].'</p>';
+	        echo '<div id="genreDiv"><p class="lead">Genre: '.$movieMap[$title]["data"]["genre"].'</p>/div>';
 
 			foreach ($movie["actors"] as $a) {
 	        	$actors[]='<span class="lead" onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$a.'</span>';
@@ -87,42 +87,46 @@ function queryDB($arguments) {
 $params = array();
 
 // Grab Variables
-$actor = $_POST['actor'];
-$director = $_POST['director'];
+if (isset($_POST['actor']) && !isempty($_POST['actor'])) {
+	$actor = $_POST['actor'];
+	// Split Actor into first and last name
+	$names = explode(" ", $actor, 2);
+	$firstname = $names[0];
 
-// Split Actor into first and last name
-$names = explode(" ", $actor, 2);
-$firstname = $names[0];
-
-if (sizeof($names)<2) {
-	$lastname="";
-} else if ($names[1] =="") {
-	$lastname="";
-} else {
-	$lastname=$names[1];
-}
-
-// Split Director into first and last name
-$names = explode(" ", $director, 2);
-$director_firstname = $names[0];
-
-if (sizeof($names)<2) {
-	$director_lastname=$director_firstname;
-} else if($names[1] == "") {
-	$director_lastname=$firstname;
-} else {
-	$director_lastname=$names[1];
-}
-
-if (strlen($actor)>0) {
+	if (sizeof($names)<2) {
+		$lastname="";
+	} else if ($names[1] =="") {
+		$lastname="";
+	} else {
+		$lastname=$names[1];
+	}
 	$params['first_name']= "%$firstname%";
 	$params['last_name']= "%$lastname%";
-} 
+}
+if (isset($_POST['director']) && !isempty($_POST['director'])) {
+	$director = $_POST['director'];
+	// Split Director into first and last name
+	$names = explode(" ", $director, 2);
+	$director_firstname = $names[0];
 
-if (strlen($director)>0) {
+	if (sizeof($names)<2) {
+		$director_lastname=$director_firstname;
+	} else if($names[1] == "") {
+		$director_lastname=$firstname;
+	} else {
+		$director_lastname=$names[1];
+	}
 	$params['director_first_name']= "%$director_firstname%";
 	$params['director_last_name']= "%$director_lastname%";
-} 
+}
+if (isset($_POST['genre']) && !isempty($_POST['genre'])) {
+	$genre = $_POST['genre'];
+	$params['genre']= $genre;
+}
+if (isset($_POST['year']) && !isempty($_POST['year'])) {
+	$year = $_POST['year'];
+	$params['year']= $year;
+}
 
 queryDB($params);
 ?>
