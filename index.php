@@ -292,14 +292,21 @@ return item;
               </div>
           </ul>
       </div>
+
+      <div id="tryAgain" style="display:none;">
+        <img src="img/arrow.png" style="position:fixed;top:42%;left:0px;" href="#menu-toggle" class="btn btn-default toggler" id="menu-toggle2">
+      </div>
+
       <!-- /#sidebar-wrapper -->
       <div id="page-content-wrapper">
           <div class="container-fluid">
               <div class="row">
                   <div class="col-lg-12">
+                    <!--
                       <div style="display:none;" id="tryAgain">
                         <a href="#menu-toggle" class="btn btn-default toggler" id="menu-toggle2">Try another Search</a>
                       </div>
+                    -->
                       <div id='dynamic'>
                         <?php if(isset($logout) && $logout) : ?>
           	   		    		<div class="alert alert-info alert-dismissable">
@@ -307,11 +314,12 @@ return item;
                 		  				You have been logged out.
           			   				</div>
         						    <?php endif; ?>
-                         <div id="results">
+
+                        <div id="results">
                           <!-- RESULTS GO HERE -->
                           <br><br><br><br>
                           <h1>Smoothie</h1>  
-                          <h2 class="words"> Finally, find a movie you <i>want</i> to watch. Simply enter in the type of movie you want to see on the left, and we will do all the work for you!"</h2>
+                          <h2 class="words"> Finally, find a movie you <i>want</i> to watch. Simply enter in the type of movie you want to see on the left, and we will do all the work for you!</h2>
                           <img src="img/main/ch1.jpg" class='displayed' alt="Mountain View" height="50%" style="position:fixed;bottom:0px;right:0px;" >
                         </div>    								
                         </div>

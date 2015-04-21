@@ -1,15 +1,21 @@
 <?php
 
+session_start();
 require_once('../conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
 function queryDB($offset) {
+	$user = "";
+	if(isset($_SESSION['user'])) {
+		$user = $_SESSION['user'];
+	}
 	$db_connection = DbUtil::loginConnection();
-	$offset = intval($offset, $base = 10);
-	if ($stmt = $db_connection->prepare("SELECT director_first_name, director_last_name FROM `Director` LIMIT 20 OFFSET ?")) {
-		$stmt->bind_param("i", $offset);
+	$offset = intval($offset, $base = 20);
+	$query = "SELECT director_first_name, director_last_name, username, Director.director_id FROM `Director` LEFT JOIN (SELECT * FROM `Favorite_Director` WHERE username = ?) AS faves ON Director.director_id = faves.director_id LIMIT 20 OFFSET ?";
+	if ($stmt = $db_connection->prepare($query)) {
+		$stmt->bind_param("si", $user, $offset);
 		$stmt->execute();
-		$stmt->bind_result($fname, $lname);
+		$stmt->bind_result($fname, $lname, $user, $id);
 		$count = 0;
 		if($offset == 0) {
 			echo '<div id="scroller"><h1>Directors</h1>';
@@ -20,12 +26,24 @@ function queryDB($offset) {
 			echo "<tr>";
 			echo("<th>" . "First Name" . "</th>\n");
 			echo("<th>" . "Last Name" . "</th>\n");
+			if(isset($_SESSION['user'])) {
+				echo("<th>" . "Favorite" . "</th>\n");
+			}
 			echo "</tr>";		
 		}
 		while($stmt->fetch()) {			
 			echo "<tr>";
 			echo("<td>" . $fname . "</td>\n");
 			echo("<td>" . $lname . "</td>\n");
+			if(isset($_SESSION['user'])) {
+				echo('<td><a href="favdirector.php?director='.$id.'" class="star ');
+				if(empty($user)) {
+					echo "notfav";				
+				} else {
+					echo "fav";				
+				}
+				echo '"></a></td>';
+			}
 			echo "</tr>";
 		}
 		if($stmt->num_rows > 0) {
