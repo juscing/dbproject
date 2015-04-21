@@ -80,7 +80,7 @@ h1 {
   text-transform: uppercase;
   text-align:center;
 }
-h2 {
+.words {
   color: #77CCDD;
   font-family: "Marvel", sans-serif;
   font-size: 28px;
