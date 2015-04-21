@@ -10,6 +10,7 @@ function queryDB($mT) {
 		echo "connection error";
 		return;
 	}
+	echo $mt;
 	$stmt = $db_connection->stmt_init();
 	if ($stmt->prepare("SELECT title FROM `Movie` WHERE `title` LIKE '%$mT%'")) {
 

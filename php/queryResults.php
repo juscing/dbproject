@@ -62,11 +62,11 @@ function queryDB($arguments) {
    	        //echo '<img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">';
 	        echo '<h2 class="featurette-heading">'.$title.'<span class="text-muted"></span></h2>';
 	        echo '<p class="lead">'.$movieMap[$title]["data"]["plot"].'</p>';
-	       	echo '<p class="lead">Director: '.$movieMap[$title]["data"]["director"].'</p>';
+	       	echo '<div id="directorDiv"><p class="lead">Director: '.$movieMap[$title]["data"]["director"].'</p></div>';
 	        echo '<p class="lead">MetaCritic Rating: '.$movieMap[$title]["data"]["cRating"].'</p>';
-	        echo '<p class="lead">Release: '.$movieMap[$title]["data"]["releaseYear"].'</p>';
+	        echo '<div id="genreDiv"><p class="lead">Release: '.$movieMap[$title]["data"]["releaseYear"].'</p>/div>';
 	        echo '<p class="lead">User Ratings: '.$movieMap[$title]["data"]["uRating"].'</p>';
-	        echo '<p class="lead">Genre: '.$movieMap[$title]["data"]["genre"].'</p>';
+	        echo '<div id="genreDiv"><p class="lead">Genre: '.$movieMap[$title]["data"]["genre"].'</p>/div>';
 
 			foreach ($movie["actors"] as $a) {
 	        	$actors[]='<span class="lead" onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$a.'</span>';
@@ -89,6 +89,8 @@ $params = array();
 // Grab Variables
 $actor = $_POST['actor'];
 $director = $_POST['director'];
+$genre = $_POST['genre'];
+$year = $_POST['year'];
 
 // Split Actor into first and last name
 $names = explode(" ", $actor, 2);
@@ -114,14 +116,26 @@ if (sizeof($names)<2) {
 	$director_lastname=$names[1];
 }
 
+// Check if Actor is none null
 if (strlen($actor)>0) {
 	$params['first_name']= "%$firstname%";
 	$params['last_name']= "%$lastname%";
 } 
 
+// Check if Director is none null
 if (strlen($director)>0) {
 	$params['director_first_name']= "%$director_firstname%";
 	$params['director_last_name']= "%$director_lastname%";
+} 
+
+// Check if Genre is none null
+if (strlen($genre)>0) {
+	$params['genre']= $genre;
+} 
+
+// Check if Year is none null
+if (strlen($year)>0) {
+	$params['year']= $year;
 } 
 
 queryDB($params);
