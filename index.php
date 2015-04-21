@@ -42,6 +42,18 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
       $('#tryAgain').hide()
       $("#wrapper").toggleClass("toggled");
   });
+  $("#results").on("click", "a.ajaxlink", function (e) {
+  		e.preventDefault();
+  		var ref = $(this).attr('href');
+  		var res = $("#results");
+  		res.fadeOut(function () {
+  			res.empty();
+  			$(window).unbind('scroll');
+  			res.load(ref, function () {
+  				res.fadeIn();
+  			});
+  		});
+  });
   $("#actorlink").click(function(e) {
   		e.preventDefault();
   		$("#wrapper").addClass("toggled");

@@ -6,10 +6,10 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
 function queryDB($offset) {
 	$db_connection = DbUtil::loginConnection();
 	$offset = intval($offset, $base = 10);
-	if ($stmt = $db_connection->prepare("SELECT title, genre, year, runtime, user_rating, critic_rating FROM `Movie` LIMIT 20 OFFSET ?")) {
+	if ($stmt = $db_connection->prepare("SELECT movie_id, title, genre, year, runtime, user_rating, critic_rating FROM `Movie` LIMIT 20 OFFSET ?")) {
 		$stmt->bind_param("i", $offset);
 		$stmt->execute();
-		$stmt->bind_result($title, $genre, $year, $runtime, $user_rating, $critic_rating);
+		$stmt->bind_result($id, $title, $genre, $year, $runtime, $user_rating, $critic_rating);
 		$count = 0;
 		if($offset == 0) {
 			echo '<div id="scroller"><h1>Movies</h1>';
@@ -28,7 +28,7 @@ function queryDB($offset) {
 		}
 		while($stmt->fetch()) {			
 			echo "<tr>";
-			echo("<td>" . $title . "</td>\n");
+			echo('<td><a class="ajaxlink" href="movie.php?movie='.$id.'">'. $title . "</a></td>\n");
 			echo("<td>" . $genre . "</td>\n");
 			echo("<td>" . $year . "</td>\n");
 			echo("<td>" . $runtime . "</td>\n");
