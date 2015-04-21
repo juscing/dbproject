@@ -87,56 +87,46 @@ function queryDB($arguments) {
 $params = array();
 
 // Grab Variables
-$actor = $_POST['actor'];
-$director = $_POST['director'];
-$genre = $_POST['genre'];
-$year = $_POST['year'];
+if (isset($_POST['actor']) && !isempty($_POST['actor'])) {
+	$actor = $_POST['actor'];
+	// Split Actor into first and last name
+	$names = explode(" ", $actor, 2);
+	$firstname = $names[0];
 
-// Split Actor into first and last name
-$names = explode(" ", $actor, 2);
-$firstname = $names[0];
-
-if (sizeof($names)<2) {
-	$lastname="";
-} else if ($names[1] =="") {
-	$lastname="";
-} else {
-	$lastname=$names[1];
-}
-
-// Split Director into first and last name
-$names = explode(" ", $director, 2);
-$director_firstname = $names[0];
-
-if (sizeof($names)<2) {
-	$director_lastname=$director_firstname;
-} else if($names[1] == "") {
-	$director_lastname=$firstname;
-} else {
-	$director_lastname=$names[1];
-}
-
-// Check if Actor is none null
-if (strlen($actor)>0) {
+	if (sizeof($names)<2) {
+		$lastname="";
+	} else if ($names[1] =="") {
+		$lastname="";
+	} else {
+		$lastname=$names[1];
+	}
 	$params['first_name']= "%$firstname%";
 	$params['last_name']= "%$lastname%";
-} 
+}
+if (isset($_POST['director']) && !isempty($_POST['director'])) {
+	$director = $_POST['director'];
+	// Split Director into first and last name
+	$names = explode(" ", $director, 2);
+	$director_firstname = $names[0];
 
-// Check if Director is none null
-if (strlen($director)>0) {
+	if (sizeof($names)<2) {
+		$director_lastname=$director_firstname;
+	} else if($names[1] == "") {
+		$director_lastname=$firstname;
+	} else {
+		$director_lastname=$names[1];
+	}
 	$params['director_first_name']= "%$director_firstname%";
 	$params['director_last_name']= "%$director_lastname%";
-} 
-
-// Check if Genre is none null
-if (strlen($genre)>0) {
+}
+if (isset($_POST['genre']) && !isempty($_POST['genre'])) {
+	$genre = $_POST['genre'];
 	$params['genre']= $genre;
-} 
-
-// Check if Year is none null
-if (strlen($year)>0) {
+}
+if (isset($_POST['year']) && !isempty($_POST['year'])) {
+	$year = $_POST['year'];
 	$params['year']= $year;
-} 
+}
 
 queryDB($params);
 ?>
