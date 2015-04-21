@@ -44,14 +44,16 @@ function queryDB($arguments) {
    	        //echo '<img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">';
 	        echo '<h2 class="featurette-heading">'.$title.'<span class="text-muted"></span></h2>';
 	        echo '<p class="lead">'.$movieMap[$title]["data"]["plot"].'</p>';
-	       	echo '<p class="lead">Director: '.$movieMap[$title]["data"]["director"].'</p>';
+	       	echo '<div id="directorDiv"><p class="lead">Director: <span onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$movieMap[$title]["data"]["director"].'</span></p></div>';
 	        echo '<p class="lead">MetaCritic Rating: '.$movieMap[$title]["data"]["cRating"].'</p>';
-	        echo '<p class="lead">Release: '.$movieMap[$title]["data"]["releaseYear"].'</p>';
+	        echo '<div id="yearDiv"><p class="lead">Release: <span onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$movieMap[$title]["data"]["releaseYear"].'</span></p></div>';
 	        echo '<p class="lead">User Ratings: '.$movieMap[$title]["data"]["uRating"].'</p>';
-	        echo '<p class="lead">Genre: '.$movieMap[$title]["data"]["genre"].'</p>';
+	        echo '<div id="genreDiv"><p class="lead" >Genre: <span onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$movieMap[$title]["data"]["genre"].'</span></p></div>';
+
 			foreach ($movie["actors"] as $a) {
 	        	$actors[]='<span class="lead" onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$a.'</span>';
 	        }
+
     		echo '<div id="actorDiv">';
     		echo '<p class="lead">Actors: '.implode('<span>, </span>', $actors).'</p>';
 	        echo '</div>';
