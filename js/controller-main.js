@@ -18,18 +18,29 @@ $("#menu-toggle").click(function() {
     var movieTitle = $('#title').val();
     var actor = $('#actor').val();
     var director = $('#director').val();
-    var keyword = $('#keyword').val();
+    var genre = $('#genre').text().length > 20 ? "" : $('#genre').text();
+    var year = $('#year').text().length > 20 ? "" : $('#year').text();
+    var minCRating = $('#crating').text().length > 20 ? "" : $('#crating').text();
+    var minURating = $('#urating').text().length > 20 ? "" : $('#urating').text();
+
     console.log("Searching for " + movieTitle);
     console.log("Searching for " + actor);
     console.log("Searching for " + director);
-    console.log("Searching for " + keyword);
+    console.log("Searching for " + genre);
+    console.log("Searching for " + year);
+    console.log("Searching for " + minCRating);
+    console.log("Searching for " + minURating);
     var res = $("#results");
     res.fadeOut(function () {
         res.empty();
         res.load("php/queryFull.php", { 
             title: movieTitle,
             actor: actor,
-            director: director
+            director: director,
+            genre: genre,
+            year: year,
+            cRating: minCRating,
+            uRating: minURating
         }, function () {
             res.fadeIn();
         });
