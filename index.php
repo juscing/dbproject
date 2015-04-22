@@ -81,6 +81,21 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   			}
   		});
   });
+  $("#results").on("click", "a.plus", function (e) {
+  		e.preventDefault();
+  		var ref = $(this).attr('href');
+  		var tag = this;
+  		var res = $("#results");
+  		$.get(ref, function(data) {
+  			if(data == 'true') {
+				$(tag).addClass('wat');
+				$(tag).removeClass('notwat');
+  			} else {
+  				$(tag).addClass('notwat');
+				$(tag).removeClass('wat');
+  			}
+  		});
+  });
   $("#actorlink").click(function(e) {
   		e.preventDefault();
   		$("#wrapper").addClass("toggled");

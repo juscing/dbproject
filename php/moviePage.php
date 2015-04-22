@@ -12,11 +12,11 @@ function queryDB($offset) {
 	}
 	$db_connection = DbUtil::loginConnection();
 	$offset = intval($offset, $base = 10);
-	$queryuser = "SELECT username, Movie.movie_id, title, genre, year, runtime, user_rating, critic_rating FROM `Movie` LEFT JOIN (SELECT * FROM `Favorites` WHERE username = ?) AS faves ON Movie.movie_id = faves.movie_id LIMIT 20 OFFSET ?";
+	$queryuser = "SELECT watches.username, faves.username, Movie.movie_id, title, genre, year, runtime, user_rating, critic_rating FROM `Movie` LEFT JOIN (SELECT * FROM `Favorites` WHERE username = ?) AS faves ON Movie.movie_id = faves.movie_id LEFT JOIN (SELECT * FROM `Watch` WHERE username = ?) AS watches ON Movie.movie_id = watches.movie_id LIMIT 20 OFFSET ?";
 	if ($stmt = $db_connection->prepare($queryuser)) {
-		$stmt->bind_param("si", $user, $offset);
+		$stmt->bind_param("ssi", $user, $user, $offset);
 		$stmt->execute();
-		$stmt->bind_result($user, $id, $title, $genre, $year, $runtime, $user_rating, $critic_rating);
+		$stmt->bind_result($userw, $userf, $id, $title, $genre, $year, $runtime, $user_rating, $critic_rating);
 		$count = 0;
 		if($offset == 0) {
 			echo '<div id="scroller"><h1>Movies</h1>';
@@ -47,13 +47,19 @@ function queryDB($offset) {
 			echo("<td>" . $critic_rating . "</td>\n");
 			if(isset($_SESSION['user'])) {
 				echo('<td><a href="favmovie.php?movie='.$id.'" class="star ');
-				if(empty($user)) {
+				if(empty($userf)) {
 					echo "notfav";				
 				} else {
 					echo "fav";				
 				}
 				echo '"></a></td>';
-				echo("<td>" . "Watch List" . "</td>\n");
+				echo('<td><a href="watchlater.php?movie='.$id.'" class="plus ');
+				if(empty($userw)) {
+					echo "notwat";				
+				} else {
+					echo "wat";				
+				}
+				echo '"></a></td>';
 			}
 			echo "</tr>";
 		}

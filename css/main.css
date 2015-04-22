@@ -113,3 +113,14 @@ a.fav {
 a.notfav {
 	background: url('../img/starsprite.png') 0 0 no-repeat;
 }
+a.plus {
+	height: 25px;
+	width: 25px;
+	display: block;
+}
+a.wat {
+	background: url('../img/plussprite.png') 0 0 no-repeat;
+}
+a.notwat {
+	background: url('../img/plussprite.png') -25px 0 no-repeat;
+}
