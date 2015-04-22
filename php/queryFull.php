@@ -56,7 +56,7 @@ function queryDB($arguments) {
 			echo '<div class="featurette" id="about">';
 	        echo '<img style="height:500px; width:500px;" class="featurette-image img-circle img-responsive pull-right" src='. "img/movies/". str_replace(' ','',$title).'.jpg>';
    	        //echo '<img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">';
-			if(!empty($movieMap[$title]["watch"]) || !empty($movieMap[$title]["fave"])) {	
+			if(isset($_SESSION['user'])) {	
 				echo('<div style="float:right;margin-top:20px;"><a href="favmovie.php?movie='.$movieMap[$title]["id"].'" class="star ');
 				if(empty($movieMap[$title]["fave"])) {
 					echo "notfav";				
