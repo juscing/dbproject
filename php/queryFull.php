@@ -1,8 +1,11 @@
 <?php
-
+echo "conf";
 require_once('../conf/config.php');
+echo "db";
 require_once(ROOT_PATH . 'db/dbconnect.php');
+echo "session";
 session_start();
+echo "done";
 function queryDB($arguments) {
 	// Declarations
 	$movieMap = array();
