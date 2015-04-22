@@ -150,7 +150,13 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   $("#movieHint").on("click", "td", function () {
   	$("#title").val($(this).text());
   });
+  $("#actorHint").on("click", "td", function () {
+    $("#actor").val($(this).text());
   });
+  $("#directorHint").on("click", "td", function () {
+    $("#director").val($(this).text());
+  });
+});
 function scroller(item) {
 item.jscroll({
     loadingHtml: '<tr><td colspan="100"><img src="img/ajax-loader.gif" alt="Loading" /> Loading...</td></tr>',
@@ -227,11 +233,6 @@ return item;
                           <div class="form-group">
                             <input class="form-control" name='director' id='director' placeholder="Search by Director">
                             <p><span id="directorHint" name ='directorHint'></span></p>
-                          </div>
-                      </li>
-                      <li>
-                          <div class="form-group">
-                              <input class="form-control" name='keyword' id='keyword' placeholder="Search by Keyword">
                           </div>
                       </li>
                       <li>

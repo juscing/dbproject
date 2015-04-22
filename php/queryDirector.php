@@ -26,12 +26,12 @@ function queryDB($name) {
 
 	$stmt = $db_connection->stmt_init();
 	# Change this to: stars with
-	if ($stmt->prepare("SELECT director_first_name, director_last_name FROM `Director` WHERE `director_first_name` LIKE '$firstname%' ". $condition . "`director_last_name` LIKE '$lastname%'")) {
+	if ($stmt->prepare("SELECT director_first_name, director_last_name FROM `Director` WHERE `director_first_name` LIKE '$firstname%' ". $condition . "`director_last_name` LIKE '$lastname%' LIMIT 5")) {
 
 		$stmt->execute();
 		$stmt->bind_result($fname, $lname);
 
-		echo "<table>";
+		echo "<table class=\"suggest\">";
 		while($stmt->fetch()) {
 			echo "<tr>";
 			echo("<td>" . $fname . " ". $lname."</td>\n");
