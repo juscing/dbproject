@@ -11,7 +11,7 @@ if(!isset($_SESSION['user'])) {
 
 <h1><?php echo $_SESSION['user']; ?></h1>
 
-<button class="btn btn-primary" type="submit">Download my Favorites</button>
+<a href="export.php" class="btn btn-primary" type="submit">Download my Watch List</a>
 
 <h2>Watch List</h2>
 
