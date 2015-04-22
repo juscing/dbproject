@@ -3,6 +3,7 @@ require_once('../conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
 function queryDB($arguments) {
+	session_start();
 	// Declarations
 	$movieMap = array();
 
@@ -161,7 +162,6 @@ if (isset($_GET['uRating']) && !empty($_GET['uRating'])) {
 	$uRating = $_GET['uRating'];
 	$params['user_rating']= "$uRating%";
 }
-session_start();
 queryDB($params);
 ?>
 <script type="text/javascript" src="js/controller-results.js"></script>
