@@ -11,6 +11,20 @@ if(!isset($_SESSION['user'])) {
 
 <h1><?php echo $_SESSION['user']; ?></h1>
 
+<h2>Watch List</h2>
+
+<?php
+$db_connection = DbUtil::loginConnection();
+if ($stmt = $db_connection->prepare("SELECT title, movie_id FROM `Movie` NATURAL JOIN `Watch` WHERE username = ?")) {
+		$stmt->bind_param("s", $_SESSION['user']);
+		$stmt->execute();
+		$stmt->bind_result($title, $id);
+		while($stmt->fetch()) {
+			echo("<p><strong><a class=\"ajaxlink\" href=\"movie.php?movie=$id\">$title</a></strong> | <a class=\"remfave text-danger\" href=\"watchlater.php?movie=$id\">Remove</a></p>");		
+		}
+}
+?>
+
 <h2>Favorite Movies</h2>
 
 <?php
