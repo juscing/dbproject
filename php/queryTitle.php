@@ -17,7 +17,7 @@ function queryDB($mT) {
 		$stmt->execute();
 		$stmt->bind_result($title);
 
-		echo "<table>";
+		echo "<table class=\"suggest\">";
 		while($stmt->fetch()) {
 			echo "<tr>";
 			echo("<td>" . $title . "</td>\n");

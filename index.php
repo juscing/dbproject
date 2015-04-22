@@ -147,6 +147,9 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   			});
   		});
   });
+  $("#movieHint").on("click", "td", function () {
+  	$("#title").val($(this).text());
+  });
   });
 function scroller(item) {
 item.jscroll({
