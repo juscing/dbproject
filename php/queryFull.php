@@ -26,7 +26,6 @@ function queryDB($arguments) {
 	}
 	$query=substr($query,0, -5);
 	// Execute the Query
-	echo $query;
 	if ($stmt->prepare($query)) {
 		$stmt->execute();
 		$stmt->bind_result($director_id, $movie_id, $actor_id, $fname, $lname, $mtitle, $genreResponse, $uRating, $releaseYear, $runtime, $cRating, $plot, $dfname, $dlname, $userf, $id1, $userw, $id2);
