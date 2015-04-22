@@ -170,7 +170,7 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   });
 */
 
-$('#actorDiv span').click(function() {
+$("#results").on("click", '#actorDiv span', function() {
 
  	var actorName = $(this).text();
  	console.log(actorName);
@@ -222,7 +222,6 @@ $("#results").on("click", '#directorDiv span', function() {
 });
 
 $("#results").on("click", '#yearDiv span', function() {
-
  	var yearNumber = $(this).text();
  	console.log(yearNumber);
 
