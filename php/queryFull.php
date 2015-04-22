@@ -165,4 +165,3 @@ if (isset($_GET['uRating']) && !empty($_GET['uRating'])) {
 }
 queryDB($params);
 ?>
-<script type="text/javascript" src="js/controller-results.js"></script>
