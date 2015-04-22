@@ -4,8 +4,7 @@ require_once('../conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
 function queryDB($mT) {
-	#$db_connection = DbUtil::loginConnection();
-	$db_connection = new mysqli('stardock.cs.virginia.edu', 'cs4750jci5kb', 'moviedbgroup', 'cs4750jci5kb');
+	$db_connection = DbUtil::loginConnection();
 	if (mysqli_connect_errno()) {
 		echo "connection error";
 		return;

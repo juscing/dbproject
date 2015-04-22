@@ -33,6 +33,7 @@ $("#menu-toggle").click(function() {
     var res = $("#results");
     res.fadeOut(function () {
         res.empty();
+        $(window).unbind('scroll');
         res.load("php/queryFull.php", { 
             title: movieTitle,
             actor: actor,
