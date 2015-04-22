@@ -4,7 +4,7 @@ require_once('../conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
 function queryDB($arguments) {
-	session_start();
+	
 	// Declarations
 	$movieMap = array();
 
@@ -56,16 +56,16 @@ function queryDB($arguments) {
 			echo '<div class="featurette" id="about">';
 	        echo '<img style="height:500px; width:500px;" class="featurette-image img-circle img-responsive pull-right" src='. "img/movies/". str_replace(' ','',$title).'.jpg>';
    	        //echo '<img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">';
-			if(isset($_SESSION['user'])) {	
+			if(!empty($movieMap[$title]["watch"]) || !empty($movieMap[$title]["fave"])) {	
 				echo('<div style="float:right;margin-top:20px;"><a href="favmovie.php?movie='.$movieMap[$title]["id"].'" class="star ');
-				if(empty($movieMap[$title]["fave"] == $user)) {
+				if(empty($movieMap[$title]["fave"])) {
 					echo "notfav";				
 				} else {
 					echo "fav";				
 				}
 				echo '"></a>';
 				echo('<a href="watchlater.php?movie='.$movieMap[$title]["id"].'" class="plus ');
-				if(empty($movieMap[$title]["watch"] == $user)) {
+				if(empty($movieMap[$title]["watch"])) {
 					echo "notwat";				
 				} else {
 					echo "wat";				
