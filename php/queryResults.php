@@ -129,7 +129,7 @@ if (isset($_POST['year']) && !empty($_POST['year'])) {
 }
 if (isset($_POST['phrase']) && !empty($_POST['phrase'])) {
 	$phrase = $_POST['phrase'];
-	echo '<h2 class="featurette-heading"><font color="#77CCDD"> ' . $phrase . '... </font></h2>';
+	echo '<h2 class="featurette-heading"><font color="#77CCDD"> ' . $phrase . '</font></h2>';
     echo '<hr class="featurette-divider">';
 }
 
