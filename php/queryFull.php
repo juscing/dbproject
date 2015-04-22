@@ -1,16 +1,17 @@
 <?php
 require_once('../conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
-session_start();
+
 function queryDB($arguments) {
 	// Declarations
 	$movieMap = array();
 
 	$user = "";
+	/*
 	if(isset($_SESSION['user'])) {
 		$user = $_SESSION['user'];
 	}	
-
+	*/
 	$db_connection = new mysqli('stardock.cs.virginia.edu', 'cs4750jci5kb', 'moviedbgroup', 'cs4750jci5kb');
 	if (mysqli_connect_errno()) {
 		echo "connection error";
@@ -53,7 +54,7 @@ function queryDB($arguments) {
 			echo '<div class="featurette" id="about">';
 	        echo '<img style="height:500px; width:500px;" class="featurette-image img-circle img-responsive pull-right" src='. "img/movies/". str_replace(' ','',$title).'.jpg>';
    	        //echo '<img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">';
-			if(isset($_SESSION['user'])) {	
+			/*if(isset($_SESSION['user'])) {	
 				echo('<div style="float:right;margin-top:20px;"><a href="favmovie.php?movie='.$movieMap[$title]["id"].'" class="star ');
 				if(empty($movieMap[$title]["fave"] == $user)) {
 					echo "notfav";				
@@ -68,7 +69,7 @@ function queryDB($arguments) {
 					echo "wat";				
 				}
 				echo '"></a></div>';
-				}		        
+				}	*/	        
 	        echo '<h2 class="featurette-heading">'.$title.'<span class="text-muted"></span></h2>';
 	        echo '<p class="lead">'.$movieMap[$title]["data"]["plot"].'</p>';
 	       	echo '<div id="directorDiv"><p class="lead"><b>Director: </b><span onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$movieMap[$title]["data"]["director"].'</span></p></div>';
