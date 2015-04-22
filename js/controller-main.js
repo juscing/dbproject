@@ -34,7 +34,7 @@ $("#menu-toggle").click(function() {
     res.fadeOut(function () {
         res.empty();
         $(window).unbind('scroll');
-        res.load("php/queryFull.php", { 
+        $.get("php/queryFull.php", { 
             title: movieTitle,
             actor: actor,
             director: director,
@@ -42,7 +42,8 @@ $("#menu-toggle").click(function() {
             year: year,
             cRating: minCRating,
             uRating: minURating
-        }, function () {
+        }, function (data) {
+        		res.html(data);
             res.fadeIn();
         });
     });

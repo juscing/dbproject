@@ -54,7 +54,7 @@ function queryDB($arguments) {
 			echo '<div class="featurette" id="about">';
 	        echo '<img style="height:500px; width:500px;" class="featurette-image img-circle img-responsive pull-right" src='. "img/movies/". str_replace(' ','',$title).'.jpg>';
    	        //echo '<img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">';
-			/*if(isset($_SESSION['user'])) {	
+			if(isset($_SESSION['user'])) {	
 				echo('<div style="float:right;margin-top:20px;"><a href="favmovie.php?movie='.$movieMap[$title]["id"].'" class="star ');
 				if(empty($movieMap[$title]["fave"] == $user)) {
 					echo "notfav";				
@@ -69,7 +69,7 @@ function queryDB($arguments) {
 					echo "wat";				
 				}
 				echo '"></a></div>';
-				}	*/	        
+				}       
 	        echo '<h2 class="featurette-heading">'.$title.'<span class="text-muted"></span></h2>';
 	        echo '<p class="lead">'.$movieMap[$title]["data"]["plot"].'</p>';
 	       	echo '<div id="directorDiv"><p class="lead"><b>Director: </b><span onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$movieMap[$title]["data"]["director"].'</span></p></div>';
@@ -96,14 +96,14 @@ function queryDB($arguments) {
 $params = array();
 
 // MOVIE TITLE
-if (isset($_POST['title']) && !empty($_POST['title'])) {
-	$title = $_POST['title'];
+if (isset($_GET['title']) && !empty($_GET['title'])) {
+	$title = $_GET['title'];
 	$params['title']= "%$title%";
 }
 
 // ACTOR
-if (isset($_POST['actor']) && !empty($_POST['actor'])) {
-	$actor = $_POST['actor'];
+if (isset($_GET['actor']) && !empty($_GET['actor'])) {
+	$actor = $_GET['actor'];
 	// Split Actor into first and last name
 	$names = explode(" ", $actor, 2);
 	$firstname = $names[0];
@@ -120,8 +120,8 @@ if (isset($_POST['actor']) && !empty($_POST['actor'])) {
 }
 
 // DIRECTOR
-if (isset($_POST['director']) && !empty($_POST['director'])) {
-	$director = $_POST['director'];
+if (isset($_GET['director']) && !empty($_GET['director'])) {
+	$director = $_GET['director'];
 	// Split Director into first and last name
 	$names = explode(" ", $director, 2);
 	$director_firstname = $names[0];
@@ -138,29 +138,30 @@ if (isset($_POST['director']) && !empty($_POST['director'])) {
 }
 
 // GENRE
-if (isset($_POST['genre']) && !empty($_POST['genre'])) {
-	$genre = $_POST['genre'];
+if (isset($_GET['genre']) && !empty($_GET['genre'])) {
+	$genre = $_GET['genre'];
 	$params['genre']= $genre;
 }
 
 // YEAR
-if (isset($_POST['year']) && !empty($_POST['year'])) {
-	$years = $_POST['year'];
+if (isset($_GET['year']) && !empty($_GET['year'])) {
+	$years = $_GET['year'];
 	$year = substr($years, 0, -2);
 	$params['year']= "$year%";
 }
 
 // User Rating
-if (isset($_POST['cRating']) && !empty($_POST['cRating'])) {
-	$cRating = $_POST['cRating'];
+if (isset($_GET['cRating']) && !empty($_GET['cRating'])) {
+	$cRating = $_GET['cRating'];
 	$params['critic_rating']= "$cRating%";
 }
 
 // User Rating
-if (isset($_POST['uRating']) && !empty($_POST['uRating'])) {
-	$uRating = $_POST['uRating'];
+if (isset($_GET['uRating']) && !empty($_GET['uRating'])) {
+	$uRating = $_GET['uRating'];
 	$params['user_rating']= "$uRating%";
 }
+session_start();
 queryDB($params);
 ?>
 <script type="text/javascript" src="js/controller-results.js"></script>
