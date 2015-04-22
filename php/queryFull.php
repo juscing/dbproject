@@ -4,16 +4,16 @@ require_once('../conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
 function queryDB($arguments) {
-	
+	session_start();
 	// Declarations
 	$movieMap = array();
 
 	$user = "";
-	/*
+	
 	if(isset($_SESSION['user'])) {
 		$user = $_SESSION['user'];
 	}	
-	*/
+	
 	$db_connection = new mysqli('stardock.cs.virginia.edu', 'cs4750jci5kb', 'moviedbgroup', 'cs4750jci5kb');
 	if (mysqli_connect_errno()) {
 		echo "connection error";
