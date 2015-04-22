@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 require_once('../conf/config.php');
 require_once(ROOT_PATH . 'db/dbconnect.php');
 
