@@ -147,6 +147,8 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   			});
   		});
   });
+
+  // AUTO COMPLETES
   $("#movieHint").on("click", "td", function () {
   	$("#title").val($(this).text());
   });
@@ -156,6 +158,19 @@ require_once(ROOT_PATH . 'db/dbconnect.php');
   $("#directorHint").on("click", "td", function () {
     $("#director").val($(this).text());
   });
+
+  // DROPDOWNS
+  $(".dropdown-menu").on("click", "li a", function () {
+    $(this).parent().parent().parent().find("button").text($(this).text());
+  })
+
+  /*
+  $("#ulist li a").click(function() {
+    alert(this.id); // id of clicked li by directly accessing DOMElement property
+  });
+*/
+
+
 });
 function scroller(item) {
 item.jscroll({
@@ -236,46 +251,22 @@ return item;
                           </div>
                       </li>
                       <li>
-                        <div class="form-group">
-                          <input class="span2" id="rating_value" name="rating_value" type="hidden">
-                          <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle rating" type="button" name='Rating' id="Rating" data-toggle="dropdown" aria-expanded="true">
-                              Rating
-                              <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                              <li onclick="$('#rating_value').val('1')"; role="presentation"><a role="menuitem" tabindex="-1" href="#">1</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">9</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">10</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </li>                   
-                      <li>
                           <div class="form-group">
                             <div class="dropdown">
-                              <button class="btn btn-default dropdown-toggle year" type="button" name='Year' id="Year" data-toggle="dropdown" aria-expanded="true">
-                                Year <span class="caret"></span>
+                              <button class="btn btn-default dropdown-toggle year" type="button" name='year' id="year" data-toggle="dropdown" aria-expanded="true">Year<span class="caret"></span>
                               </button>
                               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                 <li role="presentation" class="dropdown-header">Classics</li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1950s</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1960s</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">1950s</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">1960s</a></li>
                                 <li role="presentation" class="dropdown-header">Old School</li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1970s</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1980s</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">1970s</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">1980s</a></li>
                                 <li role="presentation" class="dropdown-header">Modern</li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1990s</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2000s</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">1990s</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">2000s</a></li>
                                 <li role="presentation" class="dropdown-header">PostModern</li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2010s</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1">2010s</a></li>
                               </ul>
                             </div>
                           </div>
@@ -283,23 +274,64 @@ return item;
                       <li>
                         <div class="form-group">
                           <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle genre" type="button" name='genre' id="Genre" data-toggle="dropdown" aria-expanded="true">
-                              Genre
-                              <span class="caret"></span>
+                            <button class="btn btn-default dropdown-toggle genre" type="button" name='genre' id="genre" data-toggle="dropdown" aria-expanded="true">Genre<span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                              <li role="presentation" class="dropdown-header">Scary</li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Horror</a></li>
+                              <li role="presentation" class="dropdown-header">Thillers</li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">Horror</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">Drama</a></li>
                               <li role="presentation" class="dropdown-header">Fun</li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Comedy</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Rom-Com</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">Comedy</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">Rom-Com</a></li>
                               <li role="presentation" class="dropdown-header">Exciting</li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Adventure</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">Action</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">Adventure</a></li>
                             </ul>
                           </div>
                         </div>
                       </li>
+                      <li>
+                        <div class="form-group">
+                          <input class="span2" id="rating_value" name="rating_value" type="hidden">
+                          <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle rating" type="button" name='rating' id="crating" data-toggle="dropdown" aria-expanded="true">Critical Rating<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id='ulist'>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">1</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">2</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">3</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">4</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">5</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">6</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">7</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">8</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">9</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">10</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="form-group">
+                          <input class="span2" id="rating_value" name="rating_value" type="hidden">
+                          <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle rating" type="button" name='rating' id="urating" data-toggle="dropdown" aria-expanded="true">User Rating<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id='ulist'>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">1</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">2</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">3</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">4</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">5</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">6</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">7</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">8</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">9</a></li>
+                              <li role="presentation"><a role="menuitem" tabindex="-1">10</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </li>                      
                       <li>
                         <div class="form-group">
                           <button href="#menu-toggle" class="btn btn-default submit" id="menu-toggle" type="submit">Find Movies to Watch</button>

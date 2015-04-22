@@ -61,18 +61,18 @@ function queryDB($arguments) {
    	        //echo '<img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">';
 	        echo '<h2 class="featurette-heading">'.$title.'<span class="text-muted"></span></h2>';
 	        echo '<p class="lead">'.$movieMap[$title]["data"]["plot"].'</p>';
-	       	echo '<div id="directorDiv"><p class="lead">Director: <span onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$movieMap[$title]["data"]["director"].'</span></p></div>';
-	        echo '<p class="lead">MetaCritic Rating: '.$movieMap[$title]["data"]["cRating"].'</p>';
-	        echo '<div id="yearDiv"><p class="lead">Release: <span onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$movieMap[$title]["data"]["releaseYear"].'</span></p></div>';
-	        echo '<p class="lead">User Ratings: '.$movieMap[$title]["data"]["uRating"].'</p>';
-	        echo '<div id="genreDiv"><p class="lead" >Genre: <span onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$movieMap[$title]["data"]["genre"].'</span></p></div>';
+	       	echo '<div id="directorDiv"><p class="lead"><b>Director: </b><span onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$movieMap[$title]["data"]["director"].'</span></p></div>';
+	        echo '<p class="lead"><b>MetaCritic Rating: </b>'.$movieMap[$title]["data"]["cRating"].'</p>';
+	        echo '<div id="yearDiv"><p class="lead"><b>Release: </b><span onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$movieMap[$title]["data"]["releaseYear"].'</span></p></div>';
+	        echo '<p class="lead"><b>User Ratings: </b>'.$movieMap[$title]["data"]["uRating"].'</p>';
+	        echo '<div id="genreDiv"><p class="lead"><b>Genre: </b><span onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$movieMap[$title]["data"]["genre"].'</span></p></div>';
 
 			foreach ($movie["actors"] as $a) {
 	        	$actors[]='<span class="lead" onmouseover="this.style.cursor=\'pointer\'" onmouseout="this.style.cursor=\'default\'">'.$a.'</span>';
 	        }
 
     		echo '<div id="actorDiv">';
-    		echo '<p class="lead">Actors: '.implode('<span>, </span>', $actors).'</p>';
+    		echo '<p class="lead"><b>Actors</b>: '.implode('<span>, </span>', $actors).'</p>';
 	        echo '</div>';
 	        echo '</div>';
 	        echo '<hr class="featurette-divider">';
@@ -128,7 +128,8 @@ if (isset($_POST['year']) && !empty($_POST['year'])) {
 }
 if (isset($_POST['phrase']) && !empty($_POST['phrase'])) {
 	$phrase = $_POST['phrase'];
-	echo '<h2> ' . $phrase . '</h2>';
+	echo '<h2 class="featurette-heading"><font color="#77CCDD"> ' . $phrase . '</font></h2>';
+    echo '<hr class="featurette-divider">';
 }
 
 queryDB($params);
