@@ -25,6 +25,7 @@ function queryDB($arguments) {
 		$query=$query . " `" . $key . "` LIKE '" . $value . "' AND ";
 	}
 	$query=substr($query,0, -5);
+	echo $query;
 	// Execute the Query
 	if ($stmt->prepare($query)) {
 		$stmt->execute();
@@ -92,7 +93,7 @@ function queryDB($arguments) {
 	}
 }
 
-
+echo "here we go";
 // Array
 $params = array();
 
@@ -162,7 +163,7 @@ if (isset($_POST['uRating']) && !empty($_POST['uRating'])) {
 	$uRating = $_POST['uRating'];
 	$params['user_rating']= "$uRating%";
 }
-
+echo "function call";
 queryDB($params);
 ?>
 <script type="text/javascript" src="js/controller-results.js"></script>
